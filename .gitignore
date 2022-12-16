@@ -1,0 +1,13 @@
+.DS_Store
+.Rproj.user
+.Rhistory
+.RData
+
+.Ruserdata
+.Rapp.history
+
+# RStudio files
+.Rproj.user
+.Rproj.user/
+
+TODO.md
