@@ -1,9 +1,11 @@
 project:
   type: book
+  output-dir: docs
 
 book:
-  title: "ds-psych"
-  author: "Jane Doe"
+  title: "Data Skills for Psychologists"
+  subtitle: "A course in reproducible research practices using R"
+  author: "Glenn Williams"
   date: "16/12/2022"
   chapters:
     - index.qmd
