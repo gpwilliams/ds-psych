@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Data Skills for Psychologists",
+    "title": "Data Science for Psychologists",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2"
+    "text": "Welcome\nThis book is an introduction to Data Science for Psychologists (and others in the social sciences). Primarily using the R programming language, you will learn a general workflow that helps you to process, plot, analyse, and present data to your audience. It is expected that readers are familiar with introductory statistics typically taught at the Undergraduate level in Psychology programmes across the UK.\nThe first section of the book is written for those with no experience with R or programming in general. The focus here is on using R across the data processing and analysis pipeline so that you can automate data processing. This has the benefit of documenting your work, automating tedious manual processes, and avoiding user error. Along the way you will learn about best practices in terms of project structure and workflows, version control to track and manage updates to your code, and how to share your work online with the broader scientific community. By the end of this section you should be able to do all your data analysis work with R.\nThe second section of the book is written for those with a background in R who want to take advantage of the advanced data analysis methods available to this language. This section has a heavier focus on theory with the goal of understanding not just how to use advanced methods, but also how these methods work.\nThroughout, concepts will be taught using examples from real and simulated data from studies in Psychology. R will be taught using a tidyverse-first approach, using a suite of packages that are designed to make programming quick, easy, and highly readable.\nTo download the course content, including slides and exercise workbooks, please follow this link: https://github.com/gpwilliams/ds-psych_course"
   },
   {
     "objectID": "intro.html",
@@ -26,5 +26,75 @@
     "title": "References",
     "section": "",
     "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "01_getting-started.html",
+    "href": "01_getting-started.html",
+    "title": "1  Getting Started",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "10_understanding-null-results.html",
+    "href": "10_understanding-null-results.html",
+    "title": "10  Understanding Null Results",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "02_creating-graphs.html",
+    "href": "02_creating-graphs.html",
+    "title": "2  Creating Graphs",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "03_transforming-data.html",
+    "href": "03_transforming-data.html",
+    "title": "3  Transforming Data",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "04_tidying-and-merging-data.html",
+    "href": "04_tidying-and-merging-data.html",
+    "title": "4  Tidying and Merging Data",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "05_core-statistics.html",
+    "href": "05_core-statistics.html",
+    "title": "5  Core Statistics",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "06_open-science-practices.html",
+    "href": "06_open-science-practices.html",
+    "title": "6  Open Science Practices",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "07_multilevel-modelling.html",
+    "href": "07_multilevel-modelling.html",
+    "title": "7  Multilevel Modelling",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "08_data-simulation-and-power.html",
+    "href": "08_data-simulation-and-power.html",
+    "title": "8  Data Simulation and Power",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "09_bayesian-estimation-and-model-comparison.html",
+    "href": "09_bayesian-estimation-and-model-comparison.html",
+    "title": "9  Bayesian Estimation and Model Comparison",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
   }
 ]

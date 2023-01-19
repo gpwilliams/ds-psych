@@ -10,5 +10,56 @@
   },
   "references.qmd": {
     "references.html": "0a7d199e"
+  },
+  "01_getting-started.qmd": {
+    "01_getting-started.html": "25271d6d"
+  },
+  "02_creating-graphs.qmd": {
+    "02_creating-graphs.html": "f4ad73e3"
+  },
+  "03_transforming-data.qmd": {
+    "03_transforming-data.html": "cd2064fe"
+  },
+  "04_tidying-and-merging-data.qmd": {
+    "04_tidying-and-merging-data.html": "0ba47184"
+  },
+  "05_core-statistics.qmd": {
+    "05_core-statistics.html": "8e98715a"
+  },
+  "06_open-science-practices.qmd": {
+    "06_open-science-practices.html": "adbc08f9"
+  },
+  "07_multilevel-modelling.qmd": {
+    "07_multilevel-modelling.html": "9b3903fe"
+  },
+  "08_data-simulation-and-power.qmd": {
+    "08_data-simulation-and-power.html": "05439bd7"
+  },
+  "09_bayesian-estimation-and-model-comparison.qmd": {
+    "09_bayesian-estimation-and-model-comparison.html": "70acc305"
+  },
+  "10_understanding-null-results.qmd": {
+    "10_understanding-null-results.html": "2d1d7f65"
+  },
+  "99_part-core.qmd": {
+    "99_part-core.html": "ee595e1a"
+  },
+  "99_part-advanced.qmd": {
+    "99_part-advanced.html": "8b1ecff8"
+  },
+  "00_part-core.qmd": {
+    "00_part-core.html": "b348e359"
+  },
+  "00_part-advanced.qmd": {
+    "00_part-advanced.html": "86f29db3"
+  },
+  "99_installation.qmd": {
+    "99_installation.html": "2c798d9d"
+  },
+  "99_installing-r.qmd": {
+    "99_installing-r.html": "21c73aa8"
+  },
+  "99_installing-bayesian-software.qmd": {
+    "99_installing-bayesian-software.html": "834ae3ab"
   }
 }

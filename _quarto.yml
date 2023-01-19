@@ -3,15 +3,31 @@ project:
   output-dir: docs
 
 book:
-  title: "Data Skills for Psychologists"
+  title: "Data Science for Psychologists"
   subtitle: "A course in reproducible research practices using R"
   author: "Glenn Williams"
-  date: "16/12/2022"
+  date: "2023-01-19"
+  cover-image: cover.png
+  favicon: cover.png
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - part: 00_part-core.qmd
+      chapters:
+        - 01_getting-started.qmd
+        - 02_creating-graphs.qmd
+        - 03_transforming-data.qmd
+        - 04_tidying-and-merging-data.qmd
+        - 05_core-statistics.qmd
+        - 06_open-science-practices.qmd
+    - part: 00_part-advanced.qmd
+      chapters:
+        - 07_multilevel-modelling.qmd
+        - 08_data-simulation-and-power.qmd
+        - 09_bayesian-estimation-and-model-comparison.qmd
+        - 10_understanding-null-results.qmd
+  appendices:
+    - 99_installing-r.qmd
+    - 99_installing-bayesian-software.qmd
 
 bibliography: references.bib
 
