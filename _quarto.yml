@@ -11,7 +11,7 @@ book:
   favicon: cover.png
   chapters:
     - index.qmd
-    - part: 00_part-core.qmd
+    - part: 00a_part-core.qmd
       chapters:
         - 01_getting-started.qmd
         - 02_creating-graphs.qmd
@@ -19,15 +19,19 @@ book:
         - 04_tidying-and-merging-data.qmd
         - 05_core-statistics.qmd
         - 06_open-science-practices.qmd
-    - part: 00_part-advanced.qmd
+    - part: 00b_part-advanced.qmd
       chapters:
         - 07_multilevel-modelling.qmd
         - 08_data-simulation-and-power.qmd
         - 09_bayesian-estimation-and-model-comparison.qmd
         - 10_understanding-null-results.qmd
   appendices:
-    - 99_installing-r.qmd
-    - 99_installing-bayesian-software.qmd
+    - 99a_installing-r.qmd
+    - 99b_installing-rstudio.qmd
+    - 99c_installing-quarto.qmd
+    - 99d_installing-bayesian-software.qmd
+    - 99e_installing-r-packages.qmd
+  
 
 bibliography: references.bib
 

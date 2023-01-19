@@ -1,0 +1,11 @@
+# Installing RStudio
+
+A popular way to work with R is to use an Integrated Development Environment (IDE). This IDE makes it easier to work with R when integrating version control, producing codebooks, and creating project files.
+
+The most popular IDE for R is RStudio by Posit, which you can download from the [Posit website](https://posit.co/). We will use this IDE in this course.
+
+Click Download RStudio in the top right of the screen. On the new page ensure you are on the tab for RStudio Desktop and click the Download RStudio button.
+
+![Downloading RStudio](img/rstudio-install.png){fig-alt="A screenshot of the Posit page for downloading RStudio"}
+
+You should have already downloaded and installed R at this point. If you haven't, follow the instructions on the Posit website or return to [Appendix A](http://glennwilliams.me/ds-psych/99a_installing-r.html). Next, download and install RStudio using the download link on the Posit website. Open the executable and follow the instructions to install R on your system.

@@ -61,5 +61,32 @@
   },
   "99_installing-bayesian-software.qmd": {
     "99_installing-bayesian-software.html": "834ae3ab"
+  },
+  "99c_installing-quarto.qmd": {
+    "99c_installing-quarto.html": "853dccf8"
+  },
+  "00a_part-core.qmd": {
+    "00a_part-core.html": "2ede99c8"
+  },
+  "00b_part-advanced.qmd": {
+    "00b_part-advanced.html": "7e1875ce"
+  },
+  "99a_installing-r.qmd": {
+    "99a_installing-r.html": "6aad787b"
+  },
+  "99b_installing-rstudio.qmd": {
+    "99b_installing-rstudio.html": "566528e1"
+  },
+  "99d_installing-r-packages.qmd": {
+    "99d_installing-r-packages.html": "4fa0e8ab"
+  },
+  "99e_installing-bayesian-software.qmd": {
+    "99e_installing-bayesian-software.html": "bcfbb651"
+  },
+  "99d_installing-bayesian-software.qmd": {
+    "99d_installing-bayesian-software.html": "c0474a31"
+  },
+  "99e_installing-r-packages.qmd": {
+    "99e_installing-r-packages.html": "404376d7"
   }
 }

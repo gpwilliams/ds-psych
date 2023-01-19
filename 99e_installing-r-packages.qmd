@@ -1,0 +1,18 @@
+# Installing R Packages
+
+For this course, we will use various packages which can be downloaded directly from CRAN or via GitHub within R. Packages are just functions that authors have created and shared with other R users to make certain processes easier. These can range from rather hard core data processing, plotting, and analysis functions to a set of beautiful palettes to make your plots more attractive.
+
+Please copy and paste the following code into your **RStudio Console** to install these packages in R. In each session we will load several of these packages up to make working with our data easier.
+
+```{r}
+#| eval: false
+install.packages("tidyverse") # various data wrangling and plotting packages bundled
+install.packages("here") # working with file paths
+install.packages("easystats") # various stats packages bundled
+install.packages("emmeans") # calculating marginal means and pairwise tests
+install.packages("lme4") # mixed effects modelling
+install.packages("afex") # ANOVA and improvements on lme4
+install.packages("brms") # bayesian regression models using Stan
+install.packages("tidybayes") # working with draws from bayesian models
+install.packages("ggdist") # visualising distributions and uncertainty
+```

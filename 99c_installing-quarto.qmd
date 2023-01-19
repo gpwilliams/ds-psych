@@ -1,0 +1,9 @@
+# Installing Quarto
+
+[Quarto](https://quarto.org/) is a new open-source program for publishing technical documents. This allows you to create articles, presentations, websites, books, and various other outputs. Crucially, Quarto allows you to dynamically create content within these outputs using R, Python, Julia, or Observable. (In fact, this book was written in Quarto!)
+
+We will use Quarto to create documents and to complete exercises for this course. On the [Quarto web page](https://quarto.org/), click Get Started.
+
+![A summary of Quarto's capabilities](img/quarto-intro.png)
+
+To download Quarto, click Get Started. This will take you to the [download page](https://quarto.org/docs/get-started/). Click the button labelled Download Quarto CLI. Next, run the executable and install this on your system. You should now be able to create and view Quarto documents in RStudio.

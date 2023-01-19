@@ -1,0 +1,29 @@
+# Installing R
+
+To install R, go to the Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/)). In the heading Download and Install R click the download link for your operating system. Once downloaded, open the executable and follow the instructions for installation on your system. Download instructions are provided below.
+
+Select the correct distribution for your operating system.
+
+![Downloading R from CRAN](img/r-install.png){fig-alt="A screenshot of the CRAN web page for downloading R for various systems"}
+
+## Downloading R for Mac
+
+For Mac users, click **Download R for macOS**. Always download the latest release of R. At the time of writing this is R version 4.2.2. Click the link to the left of the release notes to download R to your system.
+
+![Downloading R for Mac](img/r-install_mac.png){fig-alt="A screenshot of the web page for downloading R for Mac"}
+
+If you have a Mac with an M1 chip, ensure that you download and install the arm64 build. Otherwise, for Macs with an Intel chip, download and install the Intel 64-bit build.
+
+## Downloading R for Windows
+
+For Windows users, click **Install R for the first time.**
+
+![Downloading R for Windows](img/r-install_windows.png){fig-alt="A screenshot of the webpage for downloading R for Windows"}
+
+This will take you to another web page. At the top is your download link in the format Download R-\[version number\] for windows. At the time of writing this is Download R-4.2.2 for Windows.
+
+If you have a 64 bit system, install the 64 bit version of R as you'll be able to take advantage of having more than 4Gb RAM. (This is useful in instances where you're working with very large data sets.)
+
+## Downloading R for Linux
+
+For Linux users, detailed instructions are given for different distributions. Follow the relevant links and details there to download and install R.

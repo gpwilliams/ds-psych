@@ -96,5 +96,131 @@
     "title": "9  Bayesian Estimation and Model Comparison",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "99_installing-r.html",
+    "href": "99_installing-r.html",
+    "title": "Appendix A — Installing R and Dependencies",
+    "section": "",
+    "text": "B Installing R\nTo install R, go to the Comprehensive R Archive Network (CRAN). In the heading Download and Install R click the download link for your operating system.\nSelect the correct distribution for your operating system."
+  },
+  {
+    "objectID": "99_installing-r.html#downloading-r-for-mac",
+    "href": "99_installing-r.html#downloading-r-for-mac",
+    "title": "Appendix A — Installing R and Dependencies",
+    "section": "B.1 Downloading R for Mac",
+    "text": "B.1 Downloading R for Mac\nFor Mac users, click Download R for macOS. Always download the latest release of R. At the time of writing this is R version 4.2.2. Click the link to the left of the release notes to download R to your system.\n\n\n\nDownloading R for Mac"
+  },
+  {
+    "objectID": "99_installing-r.html#downloading-r-for-windows",
+    "href": "99_installing-r.html#downloading-r-for-windows",
+    "title": "Appendix A — Installing R and Dependencies",
+    "section": "B.2 Downloading R for Windows",
+    "text": "B.2 Downloading R for Windows\nFor Windows users, click Install R for the first time.\n\n\n\nDownloading R for Windows\n\n\nThis will take you to another web page. At the top is your download link in the format Download R-[version number] for windows. At the time of writing this is Download R-4.2.2 for Windows.\nIf you have a 64 bit system, install the 64 bit version of R as you'll be able to take advantage of having more than 4Gb RAM. (This is useful in instances where you're working with very large data sets.)"
+  },
+  {
+    "objectID": "99_installing-r.html#downloading-r-for-linux",
+    "href": "99_installing-r.html#downloading-r-for-linux",
+    "title": "Appendix A — Installing R and Dependencies",
+    "section": "B.3 Downloading R for Linux",
+    "text": "B.3 Downloading R for Linux\nFor Linux users, detailed instructions are given for different distributions. Follow the relevant links and details there to download and install R."
+  },
+  {
+    "objectID": "99_installing-r.html#installing-r",
+    "href": "99_installing-r.html#installing-r",
+    "title": "Appendix A — Installing R and Dependencies",
+    "section": "A.1 Installing R",
+    "text": "A.1 Installing R\nTo install R, go to the Comprehensive R Archive Network (CRAN). In the heading Download and Install R click the download link for your operating system.\nSelect the correct distribution for your operating system.\n\n\n\nDownloading R from CRAN\n\n\n\nA.1.1 Downloading R for Mac\nFor Mac users, click Download R for macOS. Always download the latest release of R. At the time of writing this is R version 4.2.2. Click the link to the left of the release notes to download R to your system.\n\n\n\nDownloading R for Mac\n\n\n\n\nA.1.2 Downloading R for Windows\nFor Windows users, click Install R for the first time.\n\n\n\nDownloading R for Windows\n\n\nThis will take you to another web page. At the top is your download link in the format Download R-[version number] for windows. At the time of writing this is Download R-4.2.2 for Windows.\nIf you have a 64 bit system, install the 64 bit version of R as you'll be able to take advantage of having more than 4Gb RAM. (This is useful in instances where you're working with very large data sets.)\n\n\nA.1.3 Downloading R for Linux\nFor Linux users, detailed instructions are given for different distributions. Follow the relevant links and details there to download and install R."
+  },
+  {
+    "objectID": "99_installing-r.html#installing-rstudio",
+    "href": "99_installing-r.html#installing-rstudio",
+    "title": "Appendix A — Installing R and Dependencies",
+    "section": "A.2 Installing RStudio",
+    "text": "A.2 Installing RStudio"
+  },
+  {
+    "objectID": "99_installing-r.html#installing-quarto",
+    "href": "99_installing-r.html#installing-quarto",
+    "title": "Appendix A — Installing R and Dependencies",
+    "section": "A.3 Installing Quarto",
+    "text": "A.3 Installing Quarto"
+  },
+  {
+    "objectID": "99a_installing-r.html#downloading-r-for-mac",
+    "href": "99a_installing-r.html#downloading-r-for-mac",
+    "title": "Appendix A — Installing R",
+    "section": "A.1 Downloading R for Mac",
+    "text": "A.1 Downloading R for Mac\nFor Mac users, click Download R for macOS. Always download the latest release of R. At the time of writing this is R version 4.2.2. Click the link to the left of the release notes to download R to your system.\n\n\n\nDownloading R for Mac\n\n\nIf you have a Mac with an M1 chip, ensure that you download and install the arm64 build. Otherwise, for Macs with an Intel chip, download and install the Intel 64-bit build."
+  },
+  {
+    "objectID": "99a_installing-r.html#downloading-r-for-windows",
+    "href": "99a_installing-r.html#downloading-r-for-windows",
+    "title": "Appendix A — Installing R",
+    "section": "A.2 Downloading R for Windows",
+    "text": "A.2 Downloading R for Windows\nFor Windows users, click Install R for the first time.\n\n\n\nDownloading R for Windows\n\n\nThis will take you to another web page. At the top is your download link in the format Download R-[version number] for windows. At the time of writing this is Download R-4.2.2 for Windows.\nIf you have a 64 bit system, install the 64 bit version of R as you’ll be able to take advantage of having more than 4Gb RAM. (This is useful in instances where you’re working with very large data sets.)"
+  },
+  {
+    "objectID": "99a_installing-r.html#downloading-r-for-linux",
+    "href": "99a_installing-r.html#downloading-r-for-linux",
+    "title": "Appendix A — Installing R",
+    "section": "A.3 Downloading R for Linux",
+    "text": "A.3 Downloading R for Linux\nFor Linux users, detailed instructions are given for different distributions. Follow the relevant links and details there to download and install R."
+  },
+  {
+    "objectID": "99a_installing-r.html#installing-rstudio",
+    "href": "99a_installing-r.html#installing-rstudio",
+    "title": "Appendix A — Installing R",
+    "section": "A.4 Installing RStudio",
+    "text": "A.4 Installing RStudio"
+  },
+  {
+    "objectID": "99a_installing-r.html#installing-quarto",
+    "href": "99a_installing-r.html#installing-quarto",
+    "title": "Appendix A — Installing R",
+    "section": "A.5 Installing Quarto",
+    "text": "A.5 Installing Quarto"
+  },
+  {
+    "objectID": "99d_installing-bayesian-software.html#mac",
+    "href": "99d_installing-bayesian-software.html#mac",
+    "title": "Appendix D — Installing Bayesian Software",
+    "section": "D.1 Mac",
+    "text": "D.1 Mac\n\nD.1.1 Configure the C++ Toolchain\nIf you have previously used R on your Mac, you may have the files ~/.R/Makevars and/or ~/.Renviron. If you have any important settings in here that you’ve defined personally, make a backup of these files in another location. Then, delete the originals. If you can’t find these files on your system, go to Finder, click on Home (i.e. the icon with the house), and type Shift + CMD + . to show the hidden files on your system. After completing the installation instructions you can go back to the new Makevars file in this location and add back in any settings you previously had.\nThere are two steps to configuring the C++ toolchain on Mac:\n\nInstalling the Xcode Command Line Tools\nInstalling gfortran.\n\nFirst, install the Xcode Command Line Tools by opening the terminal (use the spotlight search and type Terminal). In the terminal type the following and then press Enter:\nxcode-select —install.\nInstalling the Xcode Command Line Tools may take a while. Once done install gfortran. The version you install will differ whether you have a Mac with Apple or Intel chips.\n\nD.1.1.1 Macs with Apple Silicon (i.e. M1 or M2 chips)\nInstall the latest version of gfortran for your operating system at https://github.com/fxcoudert/gfortran-for-macOS/releases. Check your macOS by clicking the Apple logo in the dock and selecting About this Mac. On the releases page, select the appropriate release for your operating system. At the time of writing for up to date Macs with Apple Silicon this is gfortran 12.2 for Ventura (macOS 13). Click gfortran-ARM-12.2-Ventura.dmg to download the software and install this on your system.\n\n\nD.1.1.2 Macs with Intel Silicon\nRegardless of your macOS version, install gfortran v8.2 (for Mojave) from https://github.com/fxcoudert/gfortran-for-macOS/releases/tag/8.2\nClick the gfortran-8.2-Mojave.dmg file to download the executable. Open this and follow the instructions to install gfortran.\n\n\nD.1.1.3 Finishing Up (Apple and Intel Macs)\nFinally, we will configure the compiler to speed up compilation speed. Open RStudio and copy and paste the following into the R console.\n\ndotR <- file.path(Sys.getenv(\"HOME\"), \".R\")\nif (!file.exists(dotR)) dir.create(dotR)\nM <- file.path(dotR, \"Makevars\")\nif (!file.exists(M)) file.create(M)\ncat(\"\\nCXX14FLAGS += -O3 -mtune=native -arch x86_64 -ftemplate-depth-256\",\n    file = M, sep = \"\\n\", append = FALSE)\n\n\n\n\nD.1.2 Installing RStan\nIn case you previously tried to install RStan and it didn’t work, copy and paste the following code into the RStudio console and press Enter. This will clean up R to remove any failed installations.\n\nremove.packages(\"rstan\")\nif (file.exists(\".RData\")) file.remove(\".RData\")\n\nRestart R by clicking Session, Restart R.\nCopy and paste the following code into the console and press Enter.\n\ninstall.packages(\"rstan\")\n\nFinally, we’ll check everything works by again copying and pasting the following code into the console and pressing Enter.\n\nexample(stan_model, package = \"rstan\", run.dontrun = TRUE)\n\nThis might take some time to run, but if you see a big wall of text and it ends by sampling a model then your install works.\n\n\n\nA working installation of RStan\n\n\nFinally, install brms by typing the following into the RStudio console:\n\ninstall.packages(\"brms\")\n\nYou’re now ready to work with Bayesian models in R!"
+  },
+  {
+    "objectID": "99d_installing-bayesian-software.html#windows",
+    "href": "99d_installing-bayesian-software.html#windows",
+    "title": "Appendix D — Installing Bayesian Software",
+    "section": "D.2 Windows",
+    "text": "D.2 Windows\n\nD.2.1 Configure the C++ Toolchain\nFollow the relevant instructions for your R version here: https://github.com/stan-dev/rstan/wiki/Configuring-C—Toolchain-for-Windows. It is strongly advised that you use the latest version of R for this. At the time of writing this is R version 4.2. This necessitates installing RTools42. To do this, follow this link: https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html and download the Rtools42 installer. Click the executable and follow the instructions to install RTools.\nAs the current version of RStan on CRAN isn’t compatible with R 4.2, install the preview versions of StanHeaders and rstan by copying and pasting the following code into your RStudio console and pressing Enter:\n\ninstall.packages(\"StanHeaders\", repos = c(\"https://mc-stan.org/r-packages/\", getOption(\"repos\")))\ninstall.packages(\"rstan\", repos = c(\"https://mc-stan.org/r-packages/\", getOption(\"repos\")))\n\nEnsure that your installation works by running the following in the RStudio console:\n\nexample(stan_model, package = \"rstan\", run.dontrun = TRUE)\n\nIf this runs and samples (see the example above in the Mac instructions) then your RStan installation works.\nFinally, install brms by typing the following into the RStudio console:\n\ninstall.packages(\"brms\")\n\nYou’re now ready to work with Bayesian models in R!"
+  },
+  {
+    "objectID": "99d_installing-bayesian-software.html#linux",
+    "href": "99d_installing-bayesian-software.html#linux",
+    "title": "Appendix D — Installing Bayesian Software",
+    "section": "D.3 Linux",
+    "text": "D.3 Linux\n\nD.3.1 Configure the C++ Toolchain\nFollow the instructions at https://github.com/stan-dev/rstan/wiki/Configuring-C-Toolchain-for-Linux to install a pre-built RStan binary.\nFinally, install brms by typing the following into the RStudio console:\n\ninstall.packages(\"brms\")\n\nYou’re now ready to work with Bayesian models in R!"
+  },
+  {
+    "objectID": "99b_installing-rstudio.html",
+    "href": "99b_installing-rstudio.html",
+    "title": "Appendix B — Installing RStudio",
+    "section": "",
+    "text": "A popular way to work with R is to use an Integrated Development Environment (IDE). This IDE makes it easier to work with R when integrating version control, producing codebooks, and creating project files.\nThe most popular IDE for R is RStudio by Posit, which you can download from the Posit website. We will use this IDE in this course.\nClick Download RStudio in the top right of the screen. On the new page ensure you are on the tab for RStudio Desktop and click the Download RStudio button.\n\n\n\nDownloading RStudio\n\n\nYou should have already downloaded and installed R at this point. If you haven’t, follow the instructions on the Posit website or return to Appendix A. Next, download and install RStudio using the download link on the Posit website. Open the executable and follow the instructions to install R on your system."
+  },
+  {
+    "objectID": "99c_installing-quarto.html",
+    "href": "99c_installing-quarto.html",
+    "title": "Appendix C — Installing Quarto",
+    "section": "",
+    "text": "Quarto is a new open-source program for publishing technical documents. This allows you to create articles, presentations, websites, books, and various other outputs. Crucially, Quarto allows you to dynamically create content within these outputs using R, Python, Julia, or Observable. (In fact, this book was written in Quarto!)\nWe will use Quarto to create documents and to complete exercises for this course. On the Quarto web page, click Get Started.\n\n\n\nA summary of Quarto’s capabilities\n\n\nTo download Quarto, click Get Started. This will take you to the download page. Click the button labelled Download Quarto CLI. Next, run the executable and install this on your system. You should now be able to create and view Quarto documents in RStudio."
+  },
+  {
+    "objectID": "99e_installing-r-packages.html",
+    "href": "99e_installing-r-packages.html",
+    "title": "Appendix E — Installing R Packages",
+    "section": "",
+    "text": "For this course, we will use various packages which can be downloaded directly from CRAN or via GitHub within R. Packages are just functions that authors have created and shared with other R users to make certain processes easier. These can range from rather hard core data processing, plotting, and analysis functions to a set of beautiful palettes to make your plots more attractive.\nPlease copy and paste the following code into your RStudio Console to install these packages in R. In each session we will load several of these packages up to make working with our data easier.\n\ninstall.packages(\"tidyverse\") # various data wrangling and plotting packages bundled\ninstall.packages(\"here\") # working with file paths\ninstall.packages(\"easystats\") # various stats packages bundled\ninstall.packages(\"emmeans\") # calculating marginal means and pairwise tests\ninstall.packages(\"lme4\") # mixed effects modelling\ninstall.packages(\"afex\") # ANOVA and improvements on lme4\ninstall.packages(\"brms\") # bayesian regression models using Stan\ninstall.packages(\"tidybayes\") # working with draws from bayesian models\ninstall.packages(\"ggdist\") # visualising distributions and uncertainty"
   }
 ]
