@@ -32,7 +32,7 @@
     "href": "01_getting-started.html",
     "title": "1  Getting Started",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "Before we dive into learning the basics of R, please make sure that you have installed R, RStudio, and Quarto."
   },
   {
     "objectID": "10_understanding-null-results.html",

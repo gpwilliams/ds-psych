@@ -1,9 +1,3 @@
 # Getting Started
 
-This is a book created from markdown and executable code.
-
-See @knuth84 for additional discussion of literate programming.
-
-```{r}
-1 + 1
-```
+Before we dive into learning the basics of R, please make sure that you have installed R, RStudio, and Quarto.

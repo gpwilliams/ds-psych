@@ -31,7 +31,6 @@ book:
     - 99c_installing-quarto.qmd
     - 99d_installing-bayesian-software.qmd
     - 99e_installing-r-packages.qmd
-  
 
 bibliography: references.bib
 
