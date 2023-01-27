@@ -22,7 +22,7 @@ First, install the Xcode Command Line Tools by opening the terminal (use the spo
 
 Installing the Xcode Command Line Tools may take a while. Once done install `gfortran`. The version you install will differ whether you have a Mac with Apple or Intel chips.
 
-#### Macs with Apple Silicon (i.e. M1 or M2 chips) 
+#### Macs with Apple Silicon (i.e. M1 or M2 chips)
 
 Install the latest version of `gfortran` for your operating system at <https://github.com/fxcoudert/gfortran-for-macOS/releases>. Check your macOS by clicking the Apple logo in the dock and selecting About this Mac. On the releases page, select the appropriate release for your operating system. At the time of writing for up to date Macs with Apple Silicon this is **gfortran 12.2 for Ventura (macOS 13)**. Click **gfortran-ARM-12.2-Ventura.dmg** to download the software and install this on your system.
 
