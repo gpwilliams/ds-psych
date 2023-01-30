@@ -18,33 +18,21 @@ There are two steps to configuring the C++ toolchain on Mac:
 
 First, install the Xcode Command Line Tools by opening the terminal (use the spotlight search and type Terminal). In the terminal type the following and then press Enter:
 
-`xcode-select —install`.
+`xcode-select --install`.
 
 Installing the Xcode Command Line Tools may take a while. Once done install `gfortran`. The version you install will differ whether you have a Mac with Apple or Intel chips.
 
+Install the latest version of `gfortran` for your operating system at <https://github.com/fxcoudert/gfortran-for-macOS/releases>. 
+
+Check your macOS by clicking the Apple logo in the dock and selecting About this Mac. On the releases page, select the appropriate release for your operating system. Please install the latest version of **gfortran** for your system. Specific instructions for Apple Silicon and Intel Silicon Macs are provided below.
+
 #### Macs with Apple Silicon (i.e. M1 or M2 chips)
 
-Install the latest version of `gfortran` for your operating system at <https://github.com/fxcoudert/gfortran-for-macOS/releases>. Check your macOS by clicking the Apple logo in the dock and selecting About this Mac. On the releases page, select the appropriate release for your operating system. At the time of writing for up to date Macs with Apple Silicon this is **gfortran 12.2 for Ventura (macOS 13)**. Click **gfortran-ARM-12.2-Ventura.dmg** to download the software and install this on your system.
+At the time of writing for up to date Macs with Apple Silicon this is **gfortran 12.2 for Ventura (macOS 13)**. Click **gfortran-ARM-12.2-Ventura.dmg** to download the software and install this on your system.
 
 #### Macs with Intel Silicon
 
-**Regardless of your macOS version, install** **gfortran v8.2** (for Mojave) from <https://github.com/fxcoudert/gfortran-for-macOS/releases/tag/8.2>
-
-Click the `gfortran-8.2-Mojave.dmg` file to download the executable. Open this and follow the instructions to install `gfortran`.
-
-#### Finishing Up (Apple and Intel Macs)
-
-Finally, we will configure the compiler to speed up compilation speed. Open RStudio and copy and paste the following into the R console.
-
-```{r}
-#| eval: false
-dotR <- file.path(Sys.getenv("HOME"), ".R")
-if (!file.exists(dotR)) dir.create(dotR)
-M <- file.path(dotR, "Makevars")
-if (!file.exists(M)) file.create(M)
-cat("\nCXX14FLAGS += -O3 -mtune=native -arch x86_64 -ftemplate-depth-256",
-    file = M, sep = "\n", append = FALSE)
-```
+At the time of writing for up to date Macs with Apple Silicon this is **gfortran 12.1 for Monterey (macOS 12)**. Click **gfortran-ARM-12.1-Monterey.dmg** to download the software and install this on your system.
 
 ### Installing RStan
 

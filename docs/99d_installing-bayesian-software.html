@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.267">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -325,45 +325,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Installing <code>gfortran</code>.</p></li>
 </ol>
 <p>First, install the Xcode Command Line Tools by opening the terminal (use the spotlight search and type Terminal). In the terminal type the following and then press Enter:</p>
-<p><code>xcode-select —install</code>.</p>
+<p><code>xcode-select --install</code>.</p>
 <p>Installing the Xcode Command Line Tools may take a while. Once done install <code>gfortran</code>. The version you install will differ whether you have a Mac with Apple or Intel chips.</p>
+<p>Install the latest version of <code>gfortran</code> for your operating system at <a href="https://github.com/fxcoudert/gfortran-for-macOS/releases" class="uri">https://github.com/fxcoudert/gfortran-for-macOS/releases</a>.</p>
+<p>Check your macOS by clicking the Apple logo in the dock and selecting About this Mac. On the releases page, select the appropriate release for your operating system. Please install the latest version of <strong>gfortran</strong> for your system. Specific instructions for Apple Silicon and Intel Silicon Macs are provided below.</p>
 <section id="macs-with-apple-silicon-i.e.-m1-or-m2-chips" class="level4" data-number="D.1.1.1">
 <h4 data-number="D.1.1.1" class="anchored" data-anchor-id="macs-with-apple-silicon-i.e.-m1-or-m2-chips"><span class="header-section-number">D.1.1.1</span> Macs with Apple Silicon (i.e.&nbsp;M1 or M2 chips)</h4>
-<p>Install the latest version of <code>gfortran</code> for your operating system at <a href="https://github.com/fxcoudert/gfortran-for-macOS/releases" class="uri">https://github.com/fxcoudert/gfortran-for-macOS/releases</a>. Check your macOS by clicking the Apple logo in the dock and selecting About this Mac. On the releases page, select the appropriate release for your operating system. At the time of writing for up to date Macs with Apple Silicon this is <strong>gfortran 12.2 for Ventura (macOS 13)</strong>. Click <strong>gfortran-ARM-12.2-Ventura.dmg</strong> to download the software and install this on your system.</p>
+<p>At the time of writing for up to date Macs with Apple Silicon this is <strong>gfortran 12.2 for Ventura (macOS 13)</strong>. Click <strong>gfortran-ARM-12.2-Ventura.dmg</strong> to download the software and install this on your system.</p>
 </section>
 <section id="macs-with-intel-silicon" class="level4" data-number="D.1.1.2">
 <h4 data-number="D.1.1.2" class="anchored" data-anchor-id="macs-with-intel-silicon"><span class="header-section-number">D.1.1.2</span> Macs with Intel Silicon</h4>
-<p><strong>Regardless of your macOS version, install</strong> <strong>gfortran v8.2</strong> (for Mojave) from <a href="https://github.com/fxcoudert/gfortran-for-macOS/releases/tag/8.2" class="uri">https://github.com/fxcoudert/gfortran-for-macOS/releases/tag/8.2</a></p>
-<p>Click the <code>gfortran-8.2-Mojave.dmg</code> file to download the executable. Open this and follow the instructions to install <code>gfortran</code>.</p>
-</section>
-<section id="finishing-up-apple-and-intel-macs" class="level4" data-number="D.1.1.3">
-<h4 data-number="D.1.1.3" class="anchored" data-anchor-id="finishing-up-apple-and-intel-macs"><span class="header-section-number">D.1.1.3</span> Finishing Up (Apple and Intel Macs)</h4>
-<p>Finally, we will configure the compiler to speed up compilation speed. Open RStudio and copy and paste the following into the R console.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dotR <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">Sys.getenv</span>(<span class="st">"HOME"</span>), <span class="st">".R"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(dotR)) <span class="fu">dir.create</span>(dotR)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">file.path</span>(dotR, <span class="st">"Makevars"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(M)) <span class="fu">file.create</span>(M)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">CXX14FLAGS += -O3 -mtune=native -arch x86_64 -ftemplate-depth-256"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> M, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">append =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>At the time of writing for up to date Macs with Apple Silicon this is <strong>gfortran 12.1 for Monterey (macOS 12)</strong>. Click <strong>gfortran-ARM-12.1-Monterey.dmg</strong> to download the software and install this on your system.</p>
 </section>
 </section>
 <section id="installing-rstan" class="level3" data-number="D.1.2">
 <h3 data-number="D.1.2" class="anchored" data-anchor-id="installing-rstan"><span class="header-section-number">D.1.2</span> Installing RStan</h3>
 <p>In case you previously tried to install RStan and it didn’t work, copy and paste the following code into the RStudio console and press Enter. This will clean up R to remove any failed installations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>(<span class="st">"rstan"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">".RData"</span>)) <span class="fu">file.remove</span>(<span class="st">".RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>(<span class="st">"rstan"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">".RData"</span>)) <span class="fu">file.remove</span>(<span class="st">".RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Restart R by clicking <code>Session, Restart R</code>.</p>
 <p>Copy and paste the following code into the console and press Enter.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rstan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rstan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, we’ll check everything works by again copying and pasting the following code into the console and pressing Enter.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(stan_model, <span class="at">package =</span> <span class="st">"rstan"</span>, <span class="at">run.dontrun =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(stan_model, <span class="at">package =</span> <span class="st">"rstan"</span>, <span class="at">run.dontrun =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This might take some time to run, but if you see a big wall of text and it ends by sampling a model then your install works.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -374,7 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Finally, install <code>brms</code> by typing the following into the RStudio console:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"brms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"brms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You’re now ready to work with Bayesian models in R!</p>
 </section>
@@ -386,17 +375,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Follow the relevant instructions for your R version here: <a href="https://github.com/stan-dev/rstan/wiki/Configuring-C—Toolchain-for-Windows">https://github.com/stan-dev/rstan/wiki/Configuring-C—Toolchain-for-Windows</a>. It is <strong>strongly advised that you use the latest version of R</strong> for this. At the time of writing this is <strong>R version 4.2</strong>. This necessitates installing <code>RTools42</code>. To do this, follow this link: <a href="https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html" class="uri">https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html</a> and download the <strong>Rtools42 installer</strong>. Click the executable and follow the instructions to install RTools.</p>
 <p>As the current version of RStan on CRAN isn’t compatible with R 4.2, install the preview versions of <code>StanHeaders</code> and <code>rstan</code> by copying and pasting the following code into your RStudio console and pressing Enter:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"StanHeaders"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://mc-stan.org/r-packages/"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rstan"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://mc-stan.org/r-packages/"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"StanHeaders"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://mc-stan.org/r-packages/"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rstan"</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://mc-stan.org/r-packages/"</span>, <span class="fu">getOption</span>(<span class="st">"repos"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ensure that your installation works by running the following in the RStudio console:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(stan_model, <span class="at">package =</span> <span class="st">"rstan"</span>, <span class="at">run.dontrun =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(stan_model, <span class="at">package =</span> <span class="st">"rstan"</span>, <span class="at">run.dontrun =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If this runs and samples (see the example above in the Mac instructions) then your RStan installation works.</p>
 <p>Finally, install <code>brms</code> by typing the following into the RStudio console:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"brms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"brms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You’re now ready to work with Bayesian models in R!</p>
 </section>
@@ -408,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Follow the instructions at <a href="https://github.com/stan-dev/rstan/wiki/Configuring-C-Toolchain-for-Linux" class="uri">https://github.com/stan-dev/rstan/wiki/Configuring-C-Toolchain-for-Linux</a> to install a pre-built RStan binary.</p>
 <p>Finally, install <code>brms</code> by typing the following into the RStudio console:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"brms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"brms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You’re now ready to work with Bayesian models in R!</p>
 
