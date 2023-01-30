@@ -3,9 +3,9 @@
 Before we dive into learning the basics of R, please make sure that you have installed [R](99a_installing-r.qmd), [RStudio](99b_installing-rstudio.qmd), and [Quarto](99c_installing-quarto.qmd). By the end of this chapter, you'll understand:
 
 -   The layout of RStudio and how to use it for your data needs.
--   How to create, edit, and render Quarto documents to create rich documents that can embed computer code to dynamically render content.
+-   How file systems work and some best practices for working on projects with R.
+-   Literate programming using Quarto to create dynamic documents rendered by code.
 -   How to install and load packages in R, and how they can make working with R much easier.
--   How file systems work and some best practices for working on projects.
 -   How to create and use objects and functions.
 
 ## Understanding RStudio
