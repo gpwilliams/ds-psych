@@ -9,7 +9,8 @@ book:
   date: "2023-01-19"
   cover-image: cover.png
   favicon: cover.png
-  twitter-card: true
+  twitter-card:
+    image: cover.png
   site-url: http://glennwilliams.me/ds-psych/
   cookie-consent:
     type: express
