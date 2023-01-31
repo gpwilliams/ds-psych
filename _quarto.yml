@@ -9,14 +9,15 @@ book:
   date: "2023-01-19"
   cover-image: cover.png
   favicon: cover.png
+  site-url: "http://glennwilliams.me/ds-psych/"
+  open-graph: true
   twitter-card:
-    image: cover.png
-  site-url: http://glennwilliams.me/ds-psych/
+    image: "docs/cover.png"
   cookie-consent:
     type: express
     style: simple
     palette: light
-    policy-url: https://glennwilliams.me/#privacy-policy
+    policy-url: "https://glennwilliams.me/#privacy-policy"
   google-analytics:
     tracking-id: "G-9LJ4BCBCE0"
     anonymize-ip: true
