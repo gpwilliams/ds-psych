@@ -8,4 +8,6 @@ The second section of the book is written for those with a background in R who w
 
 Throughout, concepts will be taught using examples from real and simulated data from studies in Psychology. R will be taught using a **tidyverse**-first approach, using a suite of packages that are designed to make programming quick, easy, and highly readable.
 
-To download the course content, including slides and exercise workbooks, please follow this link: <https://github.com/gpwilliams/ds-psych_course>
+## Course Content
+
+To download the course content, including workshop slides, videos, and exercise workbooks, including instructions for using and downloading the content, please follow this link: <https://github.com/gpwilliams/ds-psych_course>

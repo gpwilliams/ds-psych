@@ -24,7 +24,7 @@ The RStudio pane can be broken down into a few different sections, as shown in @
 
 -   The [console]{style="color: #1E88E5;"}: Execute your R code here by typing or copying your code here and pressing `Enter`. You can also highlight sections of code in the editor and press `Shift + Enter` to execute that code in the console.
 
--   The [environment and history]{style="color: #004D40;"}: View objects stored in memory for this working session (e.g. values, variables, and user-defined functions etc.). You can also see a history of your commands in the *History* tab and use the Git interface to save records of your code using the Git version control system.
+-   The [environment and history]{style="color: #004D40;"}: View objects stored in memory for this working session (e.g. values, objects, and user-defined functions etc.). You can also see a history of your commands in the *History* tab and use the Git interface to save records of your code using the Git version control system.
 
 -   The [viewer]{style="color: #FFC107;"}: view any *files* in your working directory, see your last *plot* from this session, view installed *packages* on your machine (you can also load them here), view the *help* documentation for any R commands, and view plots and documents you've created in the *viewer*.
 
@@ -32,7 +32,7 @@ You should always aim to write your code in the editor because you can save it, 
 
 Before we get started writing code in RStudio, **please take the time to change some of the defaults in RStudio**.
 
-RStudio defaults to saving your workspace to an .RData file when you exit RStudio and to restoring your workspace once you reopen this. This means anything you've created will be restored when you start it back up. This is a bad idea because it impedes reproducibility: Imagine you mess around in the console and create or edit a variable that changes the results of your analyses. This change will still be there when you restart RStudio, but you'd have no record of it. Instead, it's better to ensure your code works from scratch in case you move it to a new computer or share it with others.
+RStudio defaults to saving your workspace to an .RData file when you exit RStudio and to restoring your workspace once you reopen this. This means anything you've created will be restored when you start it back up. This is a bad idea because it impedes reproducibility: Imagine you mess around in the console and create or edit an object that changes the results of your analyses. This change will still be there when you restart RStudio, but you'd have no record of it. Instead, it's better to ensure your code works from scratch in case you move it to a new computer or share it with others.
 
 Remove these defaults by going to `Tools, Global Options` and deselecting `Restore .RData into workspace at startup` and from the drop-down menu on `Save workspace to .RData on exit` to `Never`.
 
@@ -121,7 +121,7 @@ Notice that with poor naming conventions not using the correct date changes the 
 
 Before we start coding, it's worthwhile explaining how we can create scripts or documents for our code that allow us to perform our data processing tasks.
 
-Traditionally, R users often wrote their code in **R Scripts**. You can try this now by going to `File, New File, R Script`. This will open a pane in your editor where you can write your R code. Crucially, you can save this file to your computer, allowing you to return to your work at a later date or to rerun your code. Notice that at the moment the pane is labelled `Untitled1`. That's because you haven't saved your work yet. Go to `File, Save` or click the floppy disk icon just under the tab for this pane to save your work.
+Traditionally, R users often wrote their code in **R Scripts**. You can try this now by going to `File > New File > R Script`. This will open a pane in your editor where you can write your R code. Crucially, you can save this file to your computer, allowing you to return to your work at a later date or to rerun your code. Notice that at the moment the pane is labelled `Untitled1`. That's because you haven't saved your work yet. Go to `File, Save` or click the floppy disk icon just under the tab for this pane to save your work.
 
 ### Literate Programming
 
@@ -232,30 +232,30 @@ despite Glenn having alredy done this before and
 swearing he learned to not ovedo it?"
 ```
 
-But, repeatedly typing data out or referring back to this data is going to be very tedious if we can't use a shorthand to refer to it. This is where variables come in. Variables are used to store information in R. Crucially, we can perform operations on them by simply using the name of the variable.
+But, repeatedly typing data out or referring back to this data is going to be very tedious if we can't use a shorthand to refer to it. This is where objects come in. Objects are used to store information in R. Crucially, we can perform operations on them by simply using the name of the object.
 
-We assign values to a variable using the assignment operator `<-`. Using this, we give the variable its values.
+We assign values to a object using the assignment operator `<-`. Using this, we give the object its values.
 
 ```{r}
 summed_numbers <- 4 + 2
 ```
 
-By default, R will not return the result of this operation from `summed_numbers` unless you ask it to do so. To get the result, simply type the name of the variable.
+By default, R will not return the result of this operation from `summed_numbers` unless you ask it to do so. To get the result, simply type the name of the object.
 
 ```{r}
 summed_numbers
 ```
 
-We can perform operations on these variables after they've been created.
+We can perform operations on these objects after they've been created.
 
 ```{r}
 summed_numbers * 5
 ```
 
 ::: callout-note
-You can't start variables with a number, you can't use special characters (e.g. %!\*), and you can't include spaces in your variable name.
+You can't start objects with a number, you can't use special characters (e.g. %!\*), and you can't include spaces in your object name.
 
-Also, capitalisation matters, so Summed_numbers is not summed_numbers.
+Also, capitalisation matters, so `Summed_numbers` is not `summed_numbers`.
 :::
 
 R has many mathematical operations built in.
@@ -294,7 +294,7 @@ These come in pretty handy for performing most operations on our data. If you're
 
 Functions in R always end in parentheses, indicating that they take an argument. For example, one of the most basic and important functions in R is `c()` for concatenate. This allows you to combine many values into a vector or list of values.
 
-When we combine values into a variable, this variable is stored in our global environment. This means that we can perform operations on the variable later on, without the worry of typing our the values again. This is particularly useful if you want to store values from one function (say a statistical test) that you cannot pre-define but that you want to use later on.
+When we combine values into an object, this object is stored in our global environment. This means that we can perform operations on the object later on, without the worry of typing our the values again. This is particularly useful if you want to store values from one function (say a statistical test) that you cannot pre-define but that you want to use later on.
 
 Let's see how this works.
 
@@ -318,9 +318,9 @@ Functions can have default values or not (requiring you to specify the argument)
 
 If you're unsure what an argument does, you can always ask R what it does, how it does it, and what to pass to it by using `?`, e.g. `?mean()`. This will bring up a document in the Help window of RStudio.
 
-Using variables allows our code to be flexible, as we can write a script that performs operations on variables that can take any range of values. This, to me, is one of the nicest things about doing your analyses in R. While you may spend more time getting your script up and running in the first place when compared to using point-and-click methods (e.g. in SPSS), if you gain new data or run a new experiment, it's likely that your script can simply be re-run with no (or few) changes at very little cost to your time.
+Using objects allows our code to be flexible, as we can write a script that performs operations on objects that can take any range of values. This, to me, is one of the nicest things about doing your analyses in R. While you may spend more time getting your script up and running in the first place when compared to using point-and-click methods (e.g. in SPSS), if you gain new data or run a new experiment, it's likely that your script can simply be re-run with no (or few) changes at very little cost to your time.
 
-Now, this part is pretty important but may only be obvious if you've programmed in other languages. R is a **vectorised** language, which means that, as with the `sum()` function above, R can perform operations on the entire variable So, if you want to increment all values in your variable by 1, you can simply tell R to do so in one line of code, without the need for loops or other complex methods.
+Now, this part is pretty important but may only be obvious if you've programmed in other languages. R is a **vectorised** language, which means that, as with the `sum()` function above, R can perform operations on the entire object. So, if you want to increment all values in your object by 1, you can simply tell R to do so in one line of code, without the need for loops or other complex methods.
 
 ```{r}
 my_values + 1
@@ -332,21 +332,21 @@ Most of the time, you won't have any trouble using functions from a loaded packa
 
 ### Data Types
 
-While we've seen that we can create variables containing integers (whole numbers), we can also create variables of other data types. There are 4 main data types that you'll come across regularly in R:
+While we've seen that we can create objects containing integers (whole numbers), we can also create objects of other data types. There are 4 main data types that you'll come across regularly in R:
 
 -   Characters: Strings of text, e.g. `"My cats, Bear and Penny"`
 -   Numeric: Numbers stored as floats (decimals), e.g. `1`, `1.5`, `1.576`.
 -   Integer: Numbers stored explicitly as whole numbers using `L` notation, e.g. `1L`, `2L`
 -   Logical: Boolean operators, i.e. `TRUE` and `FALSE`. (Avoid `T` and `F` as these can be overwritten.)
 
-Only values of the same data type can be stored together in a variable. If you try to concatenate values of different data types you get **type coercion**. Let's see the difference in output when concatenating two numbers versus a number and a character.
+Only values of the same data type can be stored together in an object. If you try to concatenate values of different data types you get **type coercion**. Let's see the difference in output when concatenating two numbers versus a number and a character.
 
 ```{r}
 c(2, 2)
 c(2, "Cat")
 ```
 
-Notice that in the first example the two values are unquoted. In the second, the two values are quoted. That's because since you can only store values of a single data type within a variable, when you try to combine a number with a character, R converts all values to character.
+Notice that in the first example the two values are unquoted. In the second, the two values are quoted. That's because since you can only store values of a single data type within an object, when you try to combine a number with a character, R converts all values to character.
 
 Similarly, certain operations only work on specific data types. For example, if you try to perform mathematical operations on invalid data types (e.g. trying to add two characters), R will give you an error.
 
@@ -362,7 +362,7 @@ If you try to run this code, you get a similar error to this: `Error in 2 + "2" 
 
 #### Vectors
 
-We've seen already how we can combine values of different data types into one variable. In R, these variables are called vectors. We've seen already how vectors can be useful in that operations can be applied to every element in the vector using simple mathematical operations. For example, when we want to add `1` to every element of the vector `my_numbers`, we just type `my_numbers + 1`. In other, non-vectorised languages, we need to have a way to apply this addition to every element of the vector. This brings us nicely to the idea of indexing values in a vector. How do we get an value back from a vector at a specific location?
+We've seen already how we can combine values of different data types into one object. In R, these objects are called vectors. We've seen already how vectors can be useful in that operations can be applied to every element in the vector using simple mathematical operations. For example, when we want to add `1` to every element of the vector `my_numbers`, we just type `my_numbers + 1`. In other, non-vectorised languages, we need to have a way to apply this addition to every element of the vector. This brings us nicely to the idea of indexing values in a vector. How do we get an value back from a vector at a specific location?
 
 Here, we'll create a vector with the values 3 through 7, and extract the third value from the vector. We can use the `:` operator to get values between 3 and 7 without explicitly writing them out. We can then extract a value at a specific place in our vector using `[]`. Since R is a **1 indexed language**, when we want the third value from a vector, we make this `[3]`
 
@@ -414,13 +414,13 @@ iq_score
 
 Now, we could index these values, change them, or perform operations on them to our heart's content. Let's see some useful things we can do if we had data stored in this way.
 
-First, we might want to know how many participants are in our sample. Assume we don't already know it's 100, we could do this by asking for the length of the participant ID variable.
+First, we might want to know how many participants are in our sample. Assume we don't already know it's 100, we could do this by asking for the length of the participant ID vector.
 
 ```{r}
 length(participant_id)
 ```
 
-We have 100 IDs! But what if someone took the study again? How would we find out the number of unique people in the sample? First, assign participant 100 again to the variable, in the 101^st^ place. Then we'll get the length of this to see that we have 101 values. If we want the unique values, we'll take the length of the unique values.
+We have 100 IDs! But what if someone took the study again? How would we find out the number of unique people in the sample? First, assign participant 100 again to the object, in the 101^st^ place. Then we'll get the length of this to see that we have 101 values. If we want the unique values, we'll take the length of the unique values.
 
 ```{r}
 participant_id[101] <- 100
@@ -428,13 +428,13 @@ length(participant_id)
 length(unique(participant_id))
 ```
 
-Notice that by chaining together two functions we were able to get the length of the unique participants in the variable. This function chaining is an important concept in any programming work.
+Notice that by chaining together two functions we were able to get the length of the unique participants in the object. This function chaining is an important concept in any programming work.
 
 #### Lists
 
-Lists are a way to store multiple vectors of different data types together in one variable. Think of it as nesting vectors within vectors (very meta).
+Lists are a way to store multiple vectors of different data types together in one object. Think of it as nesting vectors within vectors (very meta).
 
-You can make these from existing variables or from scratch by defining values within the list. Lists can either have named elements, where we explictly state the name of each variable to be stored in the list, or they can be unnamed. Here, we'll make a named list from our simulated data.
+You can make these from existing objects or from scratch by defining values within the list. Lists can either have named elements, where we explicitly state the name of each object to be stored in the list, or they can be unnamed. Here, we'll make a named list from our simulated data.
 
 ```{r}
 simulated_data <- list(
@@ -491,7 +491,7 @@ This isn't the case for the more commonly encountered data structure you'll use 
 
 In the real world, if you tested IQs you'd typically have this data stored in a table somewhere prior to reading it into R. So let's pair the data together into a table in R. One way to do this is to create a **data frame**. However, if you use the `tidyverse` set of packages, which we do here, you have access to **tibbles**. These are just data frames with some sensible defaults like ensuring that R doesn't convert vectors to different data structures when you subset your table.
 
-Let's make a tibble from our IQ data from earlier. Notice that we have to subset the `participant_id` variable to be the same length (100 items) as the other variables.
+Let's make a tibble from our IQ data from earlier. Notice that we have to subset the `participant_id` object to be the same length (100 items) as the other objects.
 
 ```{r}
 iq_data <- tibble(
@@ -508,7 +508,7 @@ Tibbles are nice to use in that they show you the data type of each column, and 
 print(iq_data, n = 12, width = Inf)
 ```
 
-Unfortunately, some older functions in R won't allow you to use a tibble. If this is the case, simply convert your tibble to a data.frame using the `as.data.frame()` function. Note, we use `head()` to see the head of our data frame, or the first 6 values. This is necessary here to avoid printing out each row, as we're not in using a tibble any more. Notice that We've assigned the data.frame version of our IQ data to a new variable, rather than overwriting the previous variable. This is good practice when testing your code, as you never know what might break, resulting in data loss. (Although this wasn't strictly necessary here.)
+Unfortunately, some older functions in R won't allow you to use a tibble. If this is the case, simply convert your tibble to a data.frame using the `as.data.frame()` function. Note, we use `head()` to see the head of our data frame, or the first 6 values. This is necessary here to avoid printing out each row, as we're not in using a tibble any more. Notice that We've assigned the data.frame version of our IQ data to a new object, rather than overwriting the previous object. This is good practice when testing your code, as you never know what might break, resulting in data loss. (Although this wasn't strictly necessary here.)
 
 ```{r}
 iq_data_df <- as.data.frame(iq_data)
@@ -519,7 +519,7 @@ There are multiple ways to access data from a tibble or data frame.
 
 ##### Working with Columns
 
-We can access columns through dollar indexing for a variable, or by name or position as we did with lists. (In fact, this works because tibbles and data frames are just square lists!)
+We can access columns through dollar indexing for a object, or by name or position as we did with lists. (In fact, this works because tibbles and data frames are just square lists!)
 
 ```{r}
 #| eval: false
@@ -533,7 +533,7 @@ iq_data[[3]]
 iq_data[[3]]
 ```
 
-All three methods pull out every value from the IQ column as a basic vector. Just like with lists, by using the double bracket method you get just the values, and not the name of the variable.
+All three methods pull out every value from the IQ column as a basic vector. Just like with lists, by using the double bracket method you get just the values, and not the name of the object.
 
 ###### Adding or Removing Columns
 
@@ -541,7 +541,7 @@ To add a row to a data frame, we simply need to specify what we want to add and 
 
 We may have this because we made assumptions that people who use Windows, macOS, or the Linux families of operating systems differ in their IQ. This is a silly example for several reasons, not only because you can use more than one system; but we'll stick with this for now.
 
-Imagine we already have a sample of operating systems to draw from. You don't need to understand how this works, but briefly I've used the inbuilt `sample()` function to pick from the three names with replacement, skewing the probabilities to select Windows most often, followed by Mac, then Linux. All that matters is that we're assigning 100 names to a variable.
+Imagine we already have a sample of operating systems to draw from. You don't need to understand how this works, but briefly I've used the inbuilt `sample()` function to pick from the three names with replacement, skewing the probabilities to select Windows most often, followed by Mac, then Linux. All that matters is that we're assigning 100 names to an object.
 
 ```{r}
 set.seed(1892) # set the random seed
@@ -558,18 +558,16 @@ In the `iq_data` data set, we can add the new column using the usual assignment 
 
 ```{r}
 iq_data$operating_system <- operating_system # add new column
-
-head(iq_data) # view first 6 rows
+iq_data
 ```
 
-Note that you can rename the column to anything you like. But, for consistency, I like to keep the same name as the variable which acts as the data source.
+Note that you can rename the column to anything you like. But, for consistency, I like to keep the same name as the object which acts as the data source.
 
 Finally, we can remove the new column (and any column) by setting the entire column to nothing (`NULL`), like so:
 
 ```{r}
 iq_data$operating_system <- NULL # remove the column
-
-head(iq_data) # view first 6 rows
+iq_data
 ```
 
 Now the data is back to its original format.
@@ -584,21 +582,21 @@ Let's get the first two rows from the `pet` column. There's a few ways we could 
 #| eval: false
 iq_data[1:2, "pet"]
 iq_data[c(1, 2), "pet"]
-iq_data[1:2, 3]
+iq_data[1:2, 2]
 ```
 
 ```{r}
 #| echo: false
-iq_data[1:2, 3]
+iq_data[1:2, 2]
 ```
 
-You'll notice that R returns a tibble even when we subset this time. That's because we've asked for specific rows from the entire table. If we want just these rows from a column, we can combine the notation as before.
+You'll notice that R returns a tibble even when we subset this time. That's because we've asked for specific rows from the entire table. If we want just these rows from a column, we can combine the notation with list-style subsetting as we used before.
 
 ```{r}
 #| eval: false
 iq_data[1:2, "pet"]$pet
-iq_data[1:2, "pet"]["pet"]
-iq_data[1:2, "pet"][3]
+iq_data[1:2, "pet"][["pet"]]
+iq_data[1:2, "pet"][[1]]
 ```
 
 ```{r}
@@ -641,7 +639,7 @@ iq_data[101, ] <- list(
   iq = NA
 )
 
-tail(iq_data) # see the last 6 rows
+iq_data
 ```
 
 Remember that data frames and tibbles have to be square (i.e. with data in every column). This means if we just assign a participant ID to a column, all remaining rows are completed with `NA`.
@@ -668,17 +666,17 @@ matrix_example
 
 Finally, a few tips on checking your data before you manipulate your data:
 
-1. If you’re unsure what variables you've created in a session, either check the environment pane in RStudio or type `ls()` to list everything in the global environment.
+1. If you’re unsure what objects you've created in a session, either check the environment pane in RStudio or type `ls()` to list everything in the global environment.
 2. If you want to know the class of data for some object, use the `class()` function (e.g. `class(iq_data)`).
-3. If you want to know the structure (including object classes) for some object, use the `str()` function (e.g. `str(iq_data)`. Nicely, `str()` also tells you how many variables are in the object, and how many observations you have in total.
+3. If you want to know the structure (including object classes) for some object, use the `str()` function (e.g. `str(iq_data)`. Nicely, `str()` also tells you how many arrays are in the object, and how many observations you have in total.
 
-I strongly recommend that you choose a style guide and stick to it throughout when you write your R code. This will make it easier to notice any errors in your code, and increases readability for you and others. Consistency is key here. Since we’re using a `tidyverse` first approach to teaching R in this course, I recommend this one by Hadley Wickham, a core developer of the `tidyverse`:
+I strongly recommend that you choose a style guide and stick to it throughout when you write your R code. This will make it easier to notice any errors in your code, and increases readability for you and others. Consistency is key here. Since we’re using a `tidyverse` first approach to teaching R in this course, I recommend the following one by Hadley Wickham, a core developer of the `tidyverse`.
 
 ### R Style Guide by Hadley Wickham
 
 The important things to take home are that:
 
-- Use sensible variable names: if a column shows, e.g. participant weight, call it `participant_weight`.
+- Use sensible object names: if a column shows, e.g. participant weight, call it `participant_weight`.
 - Use verbs to describe user-defined functions: if you write a function to make all the descriptive statistics you could ever want, call it something like `make_descriptives()`.
 - Use a consistent style, like snake_case, or even camelCase, but don’t mix_snake_and_camelCase.
 - Comment your code with descriptions of why you’ve done something using `#`: you can often work out how you did it by following your code, but the why is easily lost.

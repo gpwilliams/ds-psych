@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.267">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -251,6 +251,11 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Appendices</a>
@@ -346,9 +351,9 @@ div.csl-indent {
 <p>Before we dive into learning the basics of R, please make sure that you have installed <a href="./99a_installing-r.html">R</a>, <a href="./99b_installing-rstudio.html">RStudio</a>, and <a href="./99c_installing-quarto.html">Quarto</a>. By the end of this chapter, you’ll understand:</p>
 <ul>
 <li>The layout of RStudio and how to use it for your data needs.</li>
-<li>How to create, edit, and render Quarto documents to create rich documents that can embed computer code to dynamically render content.</li>
+<li>How file systems work and some best practices for working on projects with R.</li>
+<li>Literate programming using Quarto to create dynamic documents rendered by code.</li>
 <li>How to install and load packages in R, and how they can make working with R much easier.</li>
-<li>How file systems work and some best practices for working on projects.</li>
 <li>How to create and use objects and functions.</li>
 </ul>
 <section id="understanding-rstudio" class="level2" data-number="1.1">
@@ -371,12 +376,12 @@ div.csl-indent {
 <ul>
 <li><p>The <span style="color: #D81B60;">editor</span>: Type, edit, and save your R code in R files or Quarto documents.</p></li>
 <li><p>The <span style="color: #1E88E5;">console</span>: Execute your R code here by typing or copying your code here and pressing <code>Enter</code>. You can also highlight sections of code in the editor and press <code>Shift + Enter</code> to execute that code in the console.</p></li>
-<li><p>The <span style="color: #004D40;">environment and history</span>: View objects stored in memory for this working session (e.g.&nbsp;values, variables, and user-defined functions etc.). You can also see a history of your commands in the <em>History</em> tab and use the Git interface to save records of your code using the Git version control system.</p></li>
+<li><p>The <span style="color: #004D40;">environment and history</span>: View objects stored in memory for this working session (e.g.&nbsp;values, objects, and user-defined functions etc.). You can also see a history of your commands in the <em>History</em> tab and use the Git interface to save records of your code using the Git version control system.</p></li>
 <li><p>The <span style="color: #FFC107;">viewer</span>: view any <em>files</em> in your working directory, see your last <em>plot</em> from this session, view installed <em>packages</em> on your machine (you can also load them here), view the <em>help</em> documentation for any R commands, and view plots and documents you’ve created in the <em>viewer</em>.</p></li>
 </ul>
 <p>You should always aim to write your code in the editor because you can save it, edit it, and reuse it later. Only write your code in the console if you’re happy for it to be lost as soon as you type it out.</p>
 <p>Before we get started writing code in RStudio, <strong>please take the time to change some of the defaults in RStudio</strong>.</p>
-<p>RStudio defaults to saving your workspace to an .RData file when you exit RStudio and to restoring your workspace once you reopen this. This means anything you’ve created will be restored when you start it back up. This is a bad idea because it impedes reproducibility: Imagine you mess around in the console and create or edit a variable that changes the results of your analyses. This change will still be there when you restart RStudio, but you’d have no record of it. Instead, it’s better to ensure your code works from scratch in case you move it to a new computer or share it with others.</p>
+<p>RStudio defaults to saving your workspace to an .RData file when you exit RStudio and to restoring your workspace once you reopen this. This means anything you’ve created will be restored when you start it back up. This is a bad idea because it impedes reproducibility: Imagine you mess around in the console and create or edit an object that changes the results of your analyses. This change will still be there when you restart RStudio, but you’d have no record of it. Instead, it’s better to ensure your code works from scratch in case you move it to a new computer or share it with others.</p>
 <p>Remove these defaults by going to <code>Tools, Global Options</code> and deselecting <code>Restore .RData into workspace at startup</code> and from the drop-down menu on <code>Save workspace to .RData on exit</code> to <code>Never</code>.</p>
 </section>
 <section id="project-management" class="level2" data-number="1.2">
@@ -476,7 +481,7 @@ div.csl-indent {
 <section id="quarto-documents" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="quarto-documents"><span class="header-section-number">1.3</span> Quarto Documents</h2>
 <p>Before we start coding, it’s worthwhile explaining how we can create scripts or documents for our code that allow us to perform our data processing tasks.</p>
-<p>Traditionally, R users often wrote their code in <strong>R Scripts</strong>. You can try this now by going to <code>File, New File, R Script</code>. This will open a pane in your editor where you can write your R code. Crucially, you can save this file to your computer, allowing you to return to your work at a later date or to rerun your code. Notice that at the moment the pane is labelled <code>Untitled1</code>. That’s because you haven’t saved your work yet. Go to <code>File, Save</code> or click the floppy disk icon just under the tab for this pane to save your work.</p>
+<p>Traditionally, R users often wrote their code in <strong>R Scripts</strong>. You can try this now by going to <code>File &gt; New File &gt; R Script</code>. This will open a pane in your editor where you can write your R code. Crucially, you can save this file to your computer, allowing you to return to your work at a later date or to rerun your code. Notice that at the moment the pane is labelled <code>Untitled1</code>. That’s because you haven’t saved your work yet. Go to <code>File, Save</code> or click the floppy disk icon just under the tab for this pane to save your work.</p>
 <section id="literate-programming" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="literate-programming"><span class="header-section-number">1.3.1</span> Literate Programming</h3>
 <p>Scripts are a great way to work with R, but they can be difficult to manage (especially for beginners) and even if these scripts produce files or graphs, you’re still left with the prospect of putting together your scientific outputs in a separate word processor, which often involves a lot of copying and pasting.</p>
@@ -547,7 +552,7 @@ div.csl-indent {
 <section id="packages" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="packages"><span class="header-section-number">1.4</span> Packages</h2>
 <p>While you can get a lot done in R out of the box, many developers have created packages that add additional functionality to R (e.g.&nbsp;new analytical techniques) or make working with R more convenient.</p>
-<p>One of the most successful packages is the <code>tidyverse</code> <span class="citation" data-cites="wickham2019welcome">Wickham et al. (<a href="#ref-wickham2019welcome" role="doc-biblioref">2019</a>)</span> suite of packages which bundles together several packages containing functions that make working with your data much easier and make your code more readable. We will primarily focus on using functions from the <code>tidyverse</code> in this course.</p>
+<p>One of the most successful packages is the <code>tidyverse</code> <span class="citation" data-cites="wickham2019welcome">Wickham et al. (<a href="references.html#ref-wickham2019welcome" role="doc-biblioref">2019</a>)</span> suite of packages which bundles together several packages containing functions that make working with your data much easier and make your code more readable. We will primarily focus on using functions from the <code>tidyverse</code> in this course.</p>
 <p>To install a package on your computer, simply type <code>install.packages()</code> in your console with the package name in quotes within this function call. Press <code>Enter</code>, and your package will be installed directly in R. You only need to do this once per computer.</p>
 <p>Try installing the tidyverse on your computer now.</p>
 <div class="cell">
@@ -592,19 +597,19 @@ div.csl-indent {
 <pre><code>[1] "Hello world, isn't this book taking longer to write than Glenn expected\ndespite Glenn having alredy done this before and \nswearing he learned to not ovedo it?"</code></pre>
 </div>
 </div>
-<p>But, repeatedly typing data out or referring back to this data is going to be very tedious if we can’t use a shorthand to refer to it. This is where variables come in. Variables are used to store information in R. Crucially, we can perform operations on them by simply using the name of the variable.</p>
-<p>We assign values to a variable using the assignment operator <code>&lt;-</code>. Using this, we give the variable its values.</p>
+<p>But, repeatedly typing data out or referring back to this data is going to be very tedious if we can’t use a shorthand to refer to it. This is where objects come in. Objects are used to store information in R. Crucially, we can perform operations on them by simply using the name of the object.</p>
+<p>We assign values to a object using the assignment operator <code>&lt;-</code>. Using this, we give the object its values.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>summed_numbers <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>By default, R will not return the result of this operation from <code>summed_numbers</code> unless you ask it to do so. To get the result, simply type the name of the variable.</p>
+<p>By default, R will not return the result of this operation from <code>summed_numbers</code> unless you ask it to do so. To get the result, simply type the name of the object.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>summed_numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
-<p>We can perform operations on these variables after they’ve been created.</p>
+<p>We can perform operations on these objects after they’ve been created.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>summed_numbers <span class="sc">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -621,8 +626,8 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can’t start variables with a number, you can’t use special characters (e.g.&nbsp;%!*), and you can’t include spaces in your variable name.</p>
-<p>Also, capitalisation matters, so Summed_numbers is not summed_numbers.</p>
+<p>You can’t start objects with a number, you can’t use special characters (e.g.&nbsp;%!*), and you can’t include spaces in your object name.</p>
+<p>Also, capitalisation matters, so <code>Summed_numbers</code> is not <code>summed_numbers</code>.</p>
 </div>
 </div>
 <p>R has many mathematical operations built in.</p>
@@ -727,7 +732,7 @@ Note
 </table>
 <p>These come in pretty handy for performing most operations on our data. If you’re unfamiliar with these, don’t worry. We’ll cover how you might use some of these in a staggered format as you progress through this course. Nicely, R also has a number of functions built in.</p>
 <p>Functions in R always end in parentheses, indicating that they take an argument. For example, one of the most basic and important functions in R is <code>c()</code> for concatenate. This allows you to combine many values into a vector or list of values.</p>
-<p>When we combine values into a variable, this variable is stored in our global environment. This means that we can perform operations on the variable later on, without the worry of typing our the values again. This is particularly useful if you want to store values from one function (say a statistical test) that you cannot pre-define but that you want to use later on.</p>
+<p>When we combine values into an object, this object is stored in our global environment. This means that we can perform operations on the object later on, without the worry of typing our the values again. This is particularly useful if you want to store values from one function (say a statistical test) that you cannot pre-define but that you want to use later on.</p>
 <p>Let’s see how this works.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
@@ -751,8 +756,8 @@ Note
 <p>Notice how you also don’t have to output things one at a time. R remembers the order of operations.</p>
 <p>Functions can have default values or not (requiring you to specify the argument). Above, we passed the the values in <code>my_values</code> to each function as an argument. Later, we’ll look at functions that ask for arguments from separate data types (e.g.&nbsp;numbers and characters) or even multiple arguments.</p>
 <p>If you’re unsure what an argument does, you can always ask R what it does, how it does it, and what to pass to it by using <code>?</code>, e.g.&nbsp;<code>?mean()</code>. This will bring up a document in the Help window of RStudio.</p>
-<p>Using variables allows our code to be flexible, as we can write a script that performs operations on variables that can take any range of values. This, to me, is one of the nicest things about doing your analyses in R. While you may spend more time getting your script up and running in the first place when compared to using point-and-click methods (e.g.&nbsp;in SPSS), if you gain new data or run a new experiment, it’s likely that your script can simply be re-run with no (or few) changes at very little cost to your time.</p>
-<p>Now, this part is pretty important but may only be obvious if you’ve programmed in other languages. R is a <strong>vectorised</strong> language, which means that, as with the <code>sum()</code> function above, R can perform operations on the entire variable So, if you want to increment all values in your variable by 1, you can simply tell R to do so in one line of code, without the need for loops or other complex methods.</p>
+<p>Using objects allows our code to be flexible, as we can write a script that performs operations on objects that can take any range of values. This, to me, is one of the nicest things about doing your analyses in R. While you may spend more time getting your script up and running in the first place when compared to using point-and-click methods (e.g.&nbsp;in SPSS), if you gain new data or run a new experiment, it’s likely that your script can simply be re-run with no (or few) changes at very little cost to your time.</p>
+<p>Now, this part is pretty important but may only be obvious if you’ve programmed in other languages. R is a <strong>vectorised</strong> language, which means that, as with the <code>sum()</code> function above, R can perform operations on the entire object. So, if you want to increment all values in your object by 1, you can simply tell R to do so in one line of code, without the need for loops or other complex methods.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>my_values <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -765,14 +770,14 @@ Note
 </section>
 <section id="data-types" class="level3" data-number="1.5.2">
 <h3 data-number="1.5.2" class="anchored" data-anchor-id="data-types"><span class="header-section-number">1.5.2</span> Data Types</h3>
-<p>While we’ve seen that we can create variables containing integers (whole numbers), we can also create variables of other data types. There are 4 main data types that you’ll come across regularly in R:</p>
+<p>While we’ve seen that we can create objects containing integers (whole numbers), we can also create objects of other data types. There are 4 main data types that you’ll come across regularly in R:</p>
 <ul>
 <li>Characters: Strings of text, e.g.&nbsp;<code>"My cats, Bear and Penny"</code></li>
 <li>Numeric: Numbers stored as floats (decimals), e.g.&nbsp;<code>1</code>, <code>1.5</code>, <code>1.576</code>.</li>
 <li>Integer: Numbers stored explicitly as whole numbers using <code>L</code> notation, e.g.&nbsp;<code>1L</code>, <code>2L</code></li>
 <li>Logical: Boolean operators, i.e.&nbsp;<code>TRUE</code> and <code>FALSE</code>. (Avoid <code>T</code> and <code>F</code> as these can be overwritten.)</li>
 </ul>
-<p>Only values of the same data type can be stored together in a variable. If you try to concatenate values of different data types you get <strong>type coercion</strong>. Let’s see the difference in output when concatenating two numbers versus a number and a character.</p>
+<p>Only values of the same data type can be stored together in an object. If you try to concatenate values of different data types you get <strong>type coercion</strong>. Let’s see the difference in output when concatenating two numbers versus a number and a character.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -783,7 +788,7 @@ Note
 <pre><code>[1] "2"   "Cat"</code></pre>
 </div>
 </div>
-<p>Notice that in the first example the two values are unquoted. In the second, the two values are quoted. That’s because since you can only store values of a single data type within a variable, when you try to combine a number with a character, R converts all values to character.</p>
+<p>Notice that in the first example the two values are unquoted. In the second, the two values are quoted. That’s because since you can only store values of a single data type within an object, when you try to combine a number with a character, R converts all values to character.</p>
 <p>Similarly, certain operations only work on specific data types. For example, if you try to perform mathematical operations on invalid data types (e.g.&nbsp;trying to add two characters), R will give you an error.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="st">"Cat"</span></span>
@@ -795,7 +800,7 @@ Note
 <h3 data-number="1.5.3" class="anchored" data-anchor-id="data-structures"><span class="header-section-number">1.5.3</span> Data Structures</h3>
 <section id="vectors" class="level4" data-number="1.5.3.1">
 <h4 data-number="1.5.3.1" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.5.3.1</span> Vectors</h4>
-<p>We’ve seen already how we can combine values of different data types into one variable. In R, these variables are called vectors. We’ve seen already how vectors can be useful in that operations can be applied to every element in the vector using simple mathematical operations. For example, when we want to add <code>1</code> to every element of the vector <code>my_numbers</code>, we just type <code>my_numbers + 1</code>. In other, non-vectorised languages, we need to have a way to apply this addition to every element of the vector. This brings us nicely to the idea of indexing values in a vector. How do we get an value back from a vector at a specific location?</p>
+<p>We’ve seen already how we can combine values of different data types into one object. In R, these objects are called vectors. We’ve seen already how vectors can be useful in that operations can be applied to every element in the vector using simple mathematical operations. For example, when we want to add <code>1</code> to every element of the vector <code>my_numbers</code>, we just type <code>my_numbers + 1</code>. In other, non-vectorised languages, we need to have a way to apply this addition to every element of the vector. This brings us nicely to the idea of indexing values in a vector. How do we get an value back from a vector at a specific location?</p>
 <p>Here, we’ll create a vector with the values 3 through 7, and extract the third value from the vector. We can use the <code>:</code> operator to get values between 3 and 7 without explicitly writing them out. We can then extract a value at a specific place in our vector using <code>[]</code>. Since R is a <strong>1 indexed language</strong>, when we want the third value from a vector, we make this <code>[3]</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_numbers <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">7</span> <span class="co"># values are: 3, 4, 5, 6, 7</span></span>
@@ -872,14 +877,14 @@ Note
 </div>
 </div>
 <p>Now, we could index these values, change them, or perform operations on them to our heart’s content. Let’s see some useful things we can do if we had data stored in this way.</p>
-<p>First, we might want to know how many participants are in our sample. Assume we don’t already know it’s 100, we could do this by asking for the length of the participant ID variable.</p>
+<p>First, we might want to know how many participants are in our sample. Assume we don’t already know it’s 100, we could do this by asking for the length of the participant ID vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(participant_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 100</code></pre>
 </div>
 </div>
-<p>We have 100 IDs! But what if someone took the study again? How would we find out the number of unique people in the sample? First, assign participant 100 again to the variable, in the 101<sup>st</sup> place. Then we’ll get the length of this to see that we have 101 values. If we want the unique values, we’ll take the length of the unique values.</p>
+<p>We have 100 IDs! But what if someone took the study again? How would we find out the number of unique people in the sample? First, assign participant 100 again to the object, in the 101<sup>st</sup> place. Then we’ll get the length of this to see that we have 101 values. If we want the unique values, we’ll take the length of the unique values.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>participant_id[<span class="dv">101</span>] <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(participant_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -891,12 +896,12 @@ Note
 <pre><code>[1] 100</code></pre>
 </div>
 </div>
-<p>Notice that by chaining together two functions we were able to get the length of the unique participants in the variable. This function chaining is an important concept in any programming work.</p>
+<p>Notice that by chaining together two functions we were able to get the length of the unique participants in the object. This function chaining is an important concept in any programming work.</p>
 </section>
 <section id="lists" class="level4" data-number="1.5.3.2">
 <h4 data-number="1.5.3.2" class="anchored" data-anchor-id="lists"><span class="header-section-number">1.5.3.2</span> Lists</h4>
-<p>Lists are a way to store multiple vectors of different data types together in one variable. Think of it as nesting vectors within vectors (very meta).</p>
-<p>You can make these from existing variables or from scratch by defining values within the list. Lists can either have named elements, where we explictly state the name of each variable to be stored in the list, or they can be unnamed. Here, we’ll make a named list from our simulated data.</p>
+<p>Lists are a way to store multiple vectors of different data types together in one object. Think of it as nesting vectors within vectors (very meta).</p>
+<p>You can make these from existing objects or from scratch by defining values within the list. Lists can either have named elements, where we explicitly state the name of each object to be stored in the list, or they can be unnamed. Here, we’ll make a named list from our simulated data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>simulated_data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">participant =</span> participant_id,</span>
@@ -966,7 +971,7 @@ $not_glenn
 <section id="data-frames-and-tibbles" class="level4" data-number="1.5.3.3">
 <h4 data-number="1.5.3.3" class="anchored" data-anchor-id="data-frames-and-tibbles"><span class="header-section-number">1.5.3.3</span> Data Frames (and Tibbles)</h4>
 <p>In the real world, if you tested IQs you’d typically have this data stored in a table somewhere prior to reading it into R. So let’s pair the data together into a table in R. One way to do this is to create a <strong>data frame</strong>. However, if you use the <code>tidyverse</code> set of packages, which we do here, you have access to <strong>tibbles</strong>. These are just data frames with some sensible defaults like ensuring that R doesn’t convert vectors to different data structures when you subset your table.</p>
-<p>Let’s make a tibble from our IQ data from earlier. Notice that we have to subset the <code>participant_id</code> variable to be the same length (100 items) as the other variables.</p>
+<p>Let’s make a tibble from our IQ data from earlier. Notice that we have to subset the <code>participant_id</code> object to be the same length (100 items) as the other objects.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>iq_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">participant =</span> participant_id[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>],</span>
@@ -1013,7 +1018,7 @@ $not_glenn
 # … with 88 more rows</code></pre>
 </div>
 </div>
-<p>Unfortunately, some older functions in R won’t allow you to use a tibble. If this is the case, simply convert your tibble to a data.frame using the <code>as.data.frame()</code> function. Note, we use <code>head()</code> to see the head of our data frame, or the first 6 values. This is necessary here to avoid printing out each row, as we’re not in using a tibble any more. Notice that We’ve assigned the data.frame version of our IQ data to a new variable, rather than overwriting the previous variable. This is good practice when testing your code, as you never know what might break, resulting in data loss. (Although this wasn’t strictly necessary here.)</p>
+<p>Unfortunately, some older functions in R won’t allow you to use a tibble. If this is the case, simply convert your tibble to a data.frame using the <code>as.data.frame()</code> function. Note, we use <code>head()</code> to see the head of our data frame, or the first 6 values. This is necessary here to avoid printing out each row, as we’re not in using a tibble any more. Notice that We’ve assigned the data.frame version of our IQ data to a new object, rather than overwriting the previous object. This is good practice when testing your code, as you never know what might break, resulting in data loss. (Although this wasn’t strictly necessary here.)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>iq_data_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(iq_data)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iq_data_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1030,7 +1035,7 @@ $not_glenn
 <p>There are multiple ways to access data from a tibble or data frame.</p>
 <section id="working-with-columns" class="level5" data-number="1.5.3.3.1">
 <h5 data-number="1.5.3.3.1" class="anchored" data-anchor-id="working-with-columns"><span class="header-section-number">1.5.3.3.1</span> Working with Columns</h5>
-<p>We can access columns through dollar indexing for a variable, or by name or position as we did with lists. (In fact, this works because tibbles and data frames are just square lists!)</p>
+<p>We can access columns through dollar indexing for a object, or by name or position as we did with lists. (In fact, this works because tibbles and data frames are just square lists!)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>iq_data<span class="sc">$</span>iq</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>iq_data[[<span class="st">"iq"</span>]]</span>
@@ -1055,12 +1060,12 @@ $not_glenn
  [99]  76.43452 108.62265</code></pre>
 </div>
 </div>
-<p>All three methods pull out every value from the IQ column as a basic vector. Just like with lists, by using the double bracket method you get just the values, and not the name of the variable.</p>
+<p>All three methods pull out every value from the IQ column as a basic vector. Just like with lists, by using the double bracket method you get just the values, and not the name of the object.</p>
 <section id="adding-or-removing-columns" class="level6" data-number="1.5.3.3.1.1">
 <h6 data-number="1.5.3.3.1.1" class="anchored" data-anchor-id="adding-or-removing-columns"><span class="header-section-number">1.5.3.3.1.1</span> Adding or Removing Columns</h6>
 <p>To add a row to a data frame, we simply need to specify what we want to add and assign it a new name. Let’s say that we want to add a column that indicates the operating system used by each participant.</p>
 <p>We may have this because we made assumptions that people who use Windows, macOS, or the Linux families of operating systems differ in their IQ. This is a silly example for several reasons, not only because you can use more than one system; but we’ll stick with this for now.</p>
-<p>Imagine we already have a sample of operating systems to draw from. You don’t need to understand how this works, but briefly I’ve used the inbuilt <code>sample()</code> function to pick from the three names with replacement, skewing the probabilities to select Windows most often, followed by Mac, then Linux. All that matters is that we’re assigning 100 names to a variable.</p>
+<p>Imagine we already have a sample of operating systems to draw from. You don’t need to understand how this works, but briefly I’ve used the inbuilt <code>sample()</code> function to pick from the three names with replacement, skewing the probabilities to select Windows most often, followed by Mac, then Linux. All that matters is that we’re assigning 100 names to an object.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1892</span>) <span class="co"># set the random seed</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1074,36 +1079,44 @@ $not_glenn
 <p>In the <code>iq_data</code> data set, we can add the new column using the usual assignment operator.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>iq_data<span class="sc">$</span>operating_system <span class="ot">&lt;-</span> operating_system <span class="co"># add new column</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iq_data) <span class="co"># view first 6 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>iq_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  participant pet      iq operating_system
-        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;           
-1           1 dog   120.  linux           
-2           2 cat   100.  mac             
-3           3 dog   106.  mac             
-4           4 cat   100.  windows         
-5           5 dog    99.4 windows         
-6           6 cat   106.  windows         </code></pre>
+<pre><code># A tibble: 100 × 4
+   participant pet      iq operating_system
+         &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;           
+ 1           1 dog   120.  linux           
+ 2           2 cat   100.  mac             
+ 3           3 dog   106.  mac             
+ 4           4 cat   100.  windows         
+ 5           5 dog    99.4 windows         
+ 6           6 cat   106.  windows         
+ 7           7 cat    69.3 mac             
+ 8           8 dog    88.3 mac             
+ 9           9 cat   101.  mac             
+10          10 dog   108.  linux           
+# … with 90 more rows</code></pre>
 </div>
 </div>
-<p>Note that you can rename the column to anything you like. But, for consistency, I like to keep the same name as the variable which acts as the data source.</p>
+<p>Note that you can rename the column to anything you like. But, for consistency, I like to keep the same name as the object which acts as the data source.</p>
 <p>Finally, we can remove the new column (and any column) by setting the entire column to nothing (<code>NULL</code>), like so:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>iq_data<span class="sc">$</span>operating_system <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># remove the column</span></span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iq_data) <span class="co"># view first 6 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>iq_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  participant pet      iq
-        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-1           1 dog   120. 
-2           2 cat   100. 
-3           3 dog   106. 
-4           4 cat   100. 
-5           5 dog    99.4
-6           6 cat   106. </code></pre>
+<pre><code># A tibble: 100 × 3
+   participant pet      iq
+         &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+ 1           1 dog   120. 
+ 2           2 cat   100. 
+ 3           3 dog   106. 
+ 4           4 cat   100. 
+ 5           5 dog    99.4
+ 6           6 cat   106. 
+ 7           7 cat    69.3
+ 8           8 dog    88.3
+ 9           9 cat   101. 
+10          10 dog   108. 
+# … with 90 more rows</code></pre>
 </div>
 </div>
 <p>Now the data is back to its original format.</p>
@@ -1116,22 +1129,22 @@ $not_glenn
 <div class="cell">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="st">"pet"</span>]</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="st">"pet"</span>]</span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 1
-     iq
-  &lt;dbl&gt;
-1  120.
-2  100.</code></pre>
+  pet  
+  &lt;chr&gt;
+1 dog  
+2 cat  </code></pre>
 </div>
 </div>
-<p>You’ll notice that R returns a tibble even when we subset this time. That’s because we’ve asked for specific rows from the entire table. If we want just these rows from a column, we can combine the notation as before.</p>
+<p>You’ll notice that R returns a tibble even when we subset this time. That’s because we’ve asked for specific rows from the entire table. If we want just these rows from a column, we can combine the notation with list-style subsetting as we used before.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="st">"pet"</span>]<span class="sc">$</span>pet</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="st">"pet"</span>][<span class="st">"pet"</span>]</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="st">"pet"</span>][<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="st">"pet"</span>][[<span class="st">"pet"</span>]]</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>iq_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="st">"pet"</span>][[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1171,17 +1184,22 @@ $not_glenn
 <span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">iq =</span> <span class="cn">NA</span></span>
 <span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(iq_data) <span class="co"># see the last 6 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>iq_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  participant pet      iq
-        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-1          96 dog   110. 
-2          97 cat   129. 
-3          98 cat    91.5
-4          99 cat    76.4
-5         100 dog   109. 
-6         101 dog    NA  </code></pre>
+<pre><code># A tibble: 101 × 3
+   participant pet      iq
+         &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+ 1           1 dog   120. 
+ 2           2 cat   100. 
+ 3           3 dog   106. 
+ 4           4 cat   100. 
+ 5           5 dog    99.4
+ 6           6 cat   106. 
+ 7           7 cat    69.3
+ 8           8 dog    88.3
+ 9           9 cat   101. 
+10          10 dog   108. 
+# … with 91 more rows</code></pre>
 </div>
 </div>
 <p>Remember that data frames and tibbles have to be square (i.e.&nbsp;with data in every column). This means if we just assign a participant ID to a column, all remaining rows are completed with <code>NA</code>.</p>
@@ -1230,23 +1248,23 @@ $not_glenn
 <h2 data-number="1.6" class="anchored" data-anchor-id="some-final-tips"><span class="header-section-number">1.6</span> Some Final Tips</h2>
 <p>Finally, a few tips on checking your data before you manipulate your data:</p>
 <ol type="1">
-<li>If you’re unsure what variables you’ve created in a session, either check the environment pane in RStudio or type <code>ls()</code> to list everything in the global environment.</li>
+<li>If you’re unsure what objects you’ve created in a session, either check the environment pane in RStudio or type <code>ls()</code> to list everything in the global environment.</li>
 <li>If you want to know the class of data for some object, use the <code>class()</code> function (e.g.&nbsp;<code>class(iq_data)</code>).</li>
-<li>If you want to know the structure (including object classes) for some object, use the <code>str()</code> function (e.g.&nbsp;<code>str(iq_data)</code>. Nicely, <code>str()</code> also tells you how many variables are in the object, and how many observations you have in total.</li>
+<li>If you want to know the structure (including object classes) for some object, use the <code>str()</code> function (e.g.&nbsp;<code>str(iq_data)</code>. Nicely, <code>str()</code> also tells you how many arrays are in the object, and how many observations you have in total.</li>
 </ol>
-<p>I strongly recommend that you choose a style guide and stick to it throughout when you write your R code. This will make it easier to notice any errors in your code, and increases readability for you and others. Consistency is key here. Since we’re using a <code>tidyverse</code> first approach to teaching R in this course, I recommend this one by Hadley Wickham, a core developer of the <code>tidyverse</code>:</p>
+<p>I strongly recommend that you choose a style guide and stick to it throughout when you write your R code. This will make it easier to notice any errors in your code, and increases readability for you and others. Consistency is key here. Since we’re using a <code>tidyverse</code> first approach to teaching R in this course, I recommend the following one by Hadley Wickham, a core developer of the <code>tidyverse</code>.</p>
 <section id="r-style-guide-by-hadley-wickham" class="level3" data-number="1.6.1">
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="r-style-guide-by-hadley-wickham"><span class="header-section-number">1.6.1</span> R Style Guide by Hadley Wickham</h3>
 <p>The important things to take home are that:</p>
 <ul>
-<li>Use sensible variable names: if a column shows, e.g.&nbsp;participant weight, call it <code>participant_weight</code>.</li>
+<li>Use sensible object names: if a column shows, e.g.&nbsp;participant weight, call it <code>participant_weight</code>.</li>
 <li>Use verbs to describe user-defined functions: if you write a function to make all the descriptive statistics you could ever want, call it something like <code>make_descriptives()</code>.</li>
 <li>Use a consistent style, like snake_case, or even camelCase, but don’t mix_snake_and_camelCase.</li>
 <li>Comment your code with descriptions of why you’ve done something using <code>#</code>: you can often work out how you did it by following your code, but the why is easily lost.</li>
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
 <div id="ref-wickham2019welcome" class="csl-entry" role="doc-biblioentry">
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the Tidyverse.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686.
 </div>
