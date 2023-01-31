@@ -25,6 +25,7 @@ book:
         - 08_data-simulation-and-power.qmd
         - 09_bayesian-estimation-and-model-comparison.qmd
         - 10_understanding-null-results.qmd
+    - references.qmd
   appendices:
     - 99a_installing-r.qmd
     - 99b_installing-rstudio.qmd
