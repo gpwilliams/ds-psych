@@ -9,6 +9,16 @@ book:
   date: "2023-01-19"
   cover-image: cover.png
   favicon: cover.png
+  twitter-card: true
+  site-url: http://glennwilliams.me/ds-psych/
+  cookie-consent:
+    type: express
+    style: simple
+    palette: light
+    policy-url: https://glennwilliams.me/#privacy-policy
+  google-analytics:
+    tracking-id: "G-9LJ4BCBCE0"
+    anonymize-ip: true
   chapters:
     - index.qmd
     - part: 00a_part-core.qmd
@@ -37,7 +47,9 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: minty
+      dark: darkly
     code-overflow: wrap
   pdf:
     documentclass: scrreprt
