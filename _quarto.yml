@@ -13,6 +13,7 @@ book:
   open-graph: true
   twitter-card:
     image: "docs/cover.png"
+    card-style: summary
   cookie-consent:
     type: express
     style: simple
