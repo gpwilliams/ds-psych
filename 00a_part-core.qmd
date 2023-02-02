@@ -1,1 +1,7 @@
 # Core
+
+This section is dedicated to getting you from no experience with R or programming whatsoever to being able to use R for your entire data processing pipeline.
+
+At the end of this section you will be able to perform complex data processing operations, including combining and cleaning multiple data sets, create beautiful, publication-ready graphs, compute descriptive and inferential statistics with a deep understanding of the general linear model family of analyses, create beautiful dynamic reports that can generate content from code, and do all of this while adhering to best practices in terms of open science practices.
+
+Once you understand the core content, you can optionally move on to the [Advanced](00b_part-advanced.qmd) topics. This section consists of modular chapters that introduce you to advanced topics in R for which R excels.

@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://glennwilliams.me/ds-psych/index.html</loc>
-    <lastmod>2023-01-31T16:13:53.354Z</lastmod>
+    <lastmod>2023-02-02T10:09:42.147Z</lastmod>
   </url>
   <url>
     <loc>http://glennwilliams.me/ds-psych/01_getting-started.html</loc>
-    <lastmod>2023-01-31T15:51:36.539Z</lastmod>
+    <lastmod>2023-02-02T10:09:30.220Z</lastmod>
   </url>
   <url>
     <loc>http://glennwilliams.me/ds-psych/02_creating-graphs.html</loc>
@@ -14,6 +14,10 @@
   </url>
   <url>
     <loc>http://glennwilliams.me/ds-psych/00a_part-core.html</loc>
-    <lastmod>2023-01-31T15:52:13.901Z</lastmod>
+    <lastmod>2023-02-02T10:04:22.872Z</lastmod>
+  </url>
+  <url>
+    <loc>http://glennwilliams.me/ds-psych/00b_part-advanced.html</loc>
+    <lastmod>2023-02-02T10:04:22.873Z</lastmod>
   </url>
 </urlset>

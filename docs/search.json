@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Data Science for Psychologists",
     "section": "",
-    "text": "This book is an introduction to Data Science for Psychologists (and others in the social sciences). Primarily using the R programming language, you will learn a general workflow that helps you to process, plot, analyse, and present data to your audience. It is expected that readers are familiar with introductory statistics typically taught at the Undergraduate level in Psychology programmes across the UK.\nThe first section of the book is written for those with no experience with R or programming in general. The focus here is on using R across the data processing and analysis pipeline so that you can automate data processing. This has the benefit of documenting your work, automating tedious manual processes, and avoiding user error. Along the way you will learn about best practices in terms of project structure and workflows, version control to track and manage updates to your code, and how to share your work online with the broader scientific community. By the end of this section you should be able to do all your data analysis work with R.\nThe second section of the book is written for those with a background in R who want to take advantage of the advanced data analysis methods available to this language. This section has a heavier focus on theory with the goal of understanding not just how to use advanced methods, but also how these methods work.\nThroughout, concepts will be taught using examples from real and simulated data from studies in Psychology. R will be taught using a tidyverse-first approach, using a suite of packages that are designed to make programming quick, easy, and highly readable."
+    "text": "This book is an introduction to Data Science for Psychologists (and others in the social sciences). Primarily using the R programming language, you will learn a general workflow that helps you to process, plot, analyse, and present data to your audience. It is expected that readers are familiar with introductory statistics typically taught at the Undergraduate level in Psychology programmes across the UK.\nThroughout, concepts will be taught using examples from real and simulated data from studies in Psychology. R will be taught using a tidyverse-first approach, using a suite of packages that are designed to make programming quick, easy, and highly readable."
   },
   {
     "objectID": "intro.html",
@@ -285,5 +285,47 @@
     "title": "Data Science for Psychologists",
     "section": "Course Content",
     "text": "Course Content\nTo download the course content, including workshop slides, videos, and exercise workbooks, including instructions for using and downloading the content, please follow this link: https://github.com/gpwilliams/ds-psych_course"
+  },
+  {
+    "objectID": "00a_part-core.html",
+    "href": "00a_part-core.html",
+    "title": "Core",
+    "section": "",
+    "text": "This section is dedicated to getting you from no experience with R or programming whatsoever to being able to use R for your entire data processing pipeline.\nAt the end of this section you will be able to perform complex data processing operations, including combining and cleaning multiple data sets, create beautiful, publication-ready graphs, compute descriptive and inferential statistics with a deep understanding of the general linear model family of analyses, create beautiful dynamic reports that can generate content from code, and do all of this while adhering to best practices in terms of open science practices.\nOnce you understand the core content, you can optionally move on to the Advanced topics. This section consists of modular chapters that introduce you to advanced topics in R for which R excels."
+  },
+  {
+    "objectID": "00b_part-advanced.html",
+    "href": "00b_part-advanced.html",
+    "title": "Advanced",
+    "section": "",
+    "text": "This section consists of modular chapters that introduce you to advanced topics in R for which R excels. Here, the focus is on introducing the conceptual and philosophical basis for these methods, learning how to implement them, but also crucially on how to communicate these results and tackle any potential issues encountered when executing these methods.\nIt is expected that you are at least comfortable with the Core topics before attempting these chapters. The structure of this section is such that you can read each chapter in any order you like, so feel free to focus on chapters that are only useful to your research."
+  },
+  {
+    "objectID": "index.html#core-content",
+    "href": "index.html#core-content",
+    "title": "Data Science for Psychologists",
+    "section": "Core Content",
+    "text": "Core Content\nThe first section of the book is written for those with no experience with R or programming in general. The focus here is on using R across the data processing and analysis pipeline so that you can automate data processing. This has the benefit of documenting your work, automating tedious manual processes, and avoiding user error. Along the way you will learn about best practices in terms of project structure and workflows, version control to track and manage updates to your code, and how to share your work online with the broader scientific community. By the end of this section you should be able to do all your data analysis work with R."
+  },
+  {
+    "objectID": "index.html#advanced-content",
+    "href": "index.html#advanced-content",
+    "title": "Data Science for Psychologists",
+    "section": "Advanced Content",
+    "text": "Advanced Content\nThe second section of the book is written for those with a background in R who want to take advantage of the advanced data analysis methods available to this language. This section has a heavier focus on theory with the goal of understanding not just how to use advanced methods, but also how these methods work."
+  },
+  {
+    "objectID": "index.html#approach-to-coding",
+    "href": "index.html#approach-to-coding",
+    "title": "Data Science for Psychologists",
+    "section": "Approach to Coding",
+    "text": "Approach to Coding\nThroughout, concepts will be taught using examples from real and simulated data from studies in Psychology. R will be taught using a tidyverse-first approach, using a suite of packages that are designed to make programming quick, easy, and highly readable."
+  },
+  {
+    "objectID": "index.html#sections",
+    "href": "index.html#sections",
+    "title": "Data Science for Psychologists",
+    "section": "Sections",
+    "text": "Sections\n\nCore\nThe first section of the book is written for those with no experience with R or programming in general. The focus here is on using R across the data processing and analysis pipeline so that you can automate data processing. This has the benefit of documenting your work, automating tedious manual processes, and avoiding user error. Along the way, you will learn about best practices in terms of project structure and workflows, version control to track and manage updates to your code, and how to share your work online with the broader scientific community. By the end of this section you should be able to do all your data analysis work with R.\n\n\nAdvanced\nThe second section of the book is written for those with a background in R or who have completed the core content who want to take advantage of the advanced data analysis methods available to this language. This section has a heavier focus on theory with the goal of understanding not just how to use advanced methods, but also how these methods work, how to diagnose and solve problems, and how to communicate your findings."
   }
 ]

@@ -1,1 +1,5 @@
 # Advanced
+
+This section consists of modular chapters that introduce you to advanced topics in R for which R excels. Here, the focus is on introducing the conceptual and philosophical basis for these methods, learning how to implement them, but also crucially on how to communicate these results and tackle any potential issues encountered when executing these methods. 
+
+It is expected that you are at least comfortable with the [Core](00b_part-advanced.qmd) topics before attempting these chapters. The structure of this section is such that you can read each chapter in any order you like, so feel free to focus on chapters that are only useful to your research.
