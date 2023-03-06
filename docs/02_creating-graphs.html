@@ -20,6 +20,88 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -93,8 +175,15 @@ cookieconsent.run({
   
 
 
+<meta property="og:title" content="Data Science for Psychologists - 2&nbsp; Creating Graphs">
+<meta property="og:description" content="Creating publication-ready data visualisations is a particular strength of R due to the ggplot2 package which uses a consistent grammar of graphics.">
+<meta property="og:site-name" content="Data Science for Psychologists">
 <meta name="twitter:title" content="Data Science for Psychologists - 2&nbsp; Creating Graphs">
+<meta name="twitter:description" content="Creating publication-ready data visualisations is a particular strength of R due to the ggplot2 package which uses a consistent grammar of graphics.">
+<meta name="twitter:image" content="http://glennwilliams.me/ds-psych/docs/cover.png">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="600">
+<meta name="twitter:image-width" content="518">
 </head>
 
 <body class="nav-sidebar floating">
@@ -249,7 +338,40 @@ cookieconsent.run({
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-grammar-of-graphics" id="toc-the-grammar-of-graphics" class="nav-link active" data-scroll-target="#the-grammar-of-graphics"><span class="toc-section-number">2.1</span>  The Grammar of Graphics</a></li>
+  <li><a href="#building-a-plot-layer-by-layer" id="toc-building-a-plot-layer-by-layer" class="nav-link" data-scroll-target="#building-a-plot-layer-by-layer"><span class="toc-section-number">2.2</span>  Building a Plot, Layer by Layer</a>
+  <ul class="collapse">
+  <li><a href="#aesthetics" id="toc-aesthetics" class="nav-link" data-scroll-target="#aesthetics"><span class="toc-section-number">2.2.1</span>  Aesthetics</a></li>
+  </ul></li>
+  <li><a href="#exploring-geoms" id="toc-exploring-geoms" class="nav-link" data-scroll-target="#exploring-geoms"><span class="toc-section-number">2.3</span>  Exploring Geoms</a>
+  <ul class="collapse">
+  <li><a href="#bars" id="toc-bars" class="nav-link" data-scroll-target="#bars"><span class="toc-section-number">2.3.1</span>  Bars</a></li>
+  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots"><span class="toc-section-number">2.3.2</span>  Boxplots</a></li>
+  <li><a href="#violins" id="toc-violins" class="nav-link" data-scroll-target="#violins"><span class="toc-section-number">2.3.3</span>  Violins</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="toc-section-number">2.3.4</span>  Histograms</a></li>
+  <li><a href="#density-plots" id="toc-density-plots" class="nav-link" data-scroll-target="#density-plots"><span class="toc-section-number">2.3.5</span>  Density Plots</a></li>
+  <li><a href="#smooths" id="toc-smooths" class="nav-link" data-scroll-target="#smooths"><span class="toc-section-number">2.3.6</span>  Smooths</a></li>
+  </ul></li>
+  <li><a href="#combining-geoms" id="toc-combining-geoms" class="nav-link" data-scroll-target="#combining-geoms"><span class="toc-section-number">2.4</span>  Combining Geoms</a></li>
+  <li><a href="#positioning" id="toc-positioning" class="nav-link" data-scroll-target="#positioning"><span class="toc-section-number">2.5</span>  Positioning</a>
+  <ul class="collapse">
+  <li><a href="#jitter" id="toc-jitter" class="nav-link" data-scroll-target="#jitter"><span class="toc-section-number">2.5.1</span>  Jitter</a></li>
+  <li><a href="#dodge" id="toc-dodge" class="nav-link" data-scroll-target="#dodge"><span class="toc-section-number">2.5.2</span>  Dodge</a></li>
+  </ul></li>
+  <li><a href="#facets" id="toc-facets" class="nav-link" data-scroll-target="#facets"><span class="toc-section-number">2.6</span>  Facets</a>
+  <ul class="collapse">
+  <li><a href="#facet-wrap" id="toc-facet-wrap" class="nav-link" data-scroll-target="#facet-wrap"><span class="toc-section-number">2.6.1</span>  Facet Wrap</a></li>
+  <li><a href="#facet-grid" id="toc-facet-grid" class="nav-link" data-scroll-target="#facet-grid"><span class="toc-section-number">2.6.2</span>  Facet Grid</a></li>
+  </ul></li>
+  <li><a href="#combining-plots" id="toc-combining-plots" class="nav-link" data-scroll-target="#combining-plots"><span class="toc-section-number">2.7</span>  Combining Plots</a></li>
+  <li><a href="#saving-plots" id="toc-saving-plots" class="nav-link" data-scroll-target="#saving-plots"><span class="toc-section-number">2.8</span>  Saving Plots</a></li>
+  <li><a href="#advanced-functionality" id="toc-advanced-functionality" class="nav-link" data-scroll-target="#advanced-functionality"><span class="toc-section-number">2.9</span>  Advanced Functionality</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -271,8 +393,521 @@ cookieconsent.run({
 
 </header>
 
+<p>Creating publication-ready data visualisations is a particular strength of R due to the <code>ggplot2</code> package which uses a consistent <strong>grammar of graphics</strong>. This makes creating plots fairly logical and consistent, requiring minimal code regardless of your intended plotting style.</p>
+<p>At the end of this chapter, you’ll understand:</p>
+<ul>
+<li><p>The grammar of graphics, helping you to grasp how R (and how you can) build plots. Here, we will focus on geometric objects, aesthetics, scales, and annotations.</p></li>
+<li><p>How to create a series of faceted sub–plots.</p></li>
+<li><p>How to customise your plots with various themes, scales, labels, and other additional content.</p></li>
+<li><p>How to combine plots quickly and easily using the <code>patchwork</code> package.</p></li>
+<li><p>How to save your plots to file.</p></li>
+</ul>
+<p>While this is a lot of content for one chapter, by the end you should see how using a consistent grammar makes learning all of this possible in such a short amount of time. We will also briefly cover some advanced topics to show you some of the additional functionality of <code>ggplot2</code>.</p>
+<section id="the-grammar-of-graphics" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="the-grammar-of-graphics"><span class="header-section-number">2.1</span> The Grammar of Graphics</h2>
+<p>In R, you can build plots using the base plotting system or lattice graphics. The former is very low level, giving you a lot of granular control over plotting at the cost to specifying everything manually. The latter is more high level but makes customisation difficult. Thankfully, <code>ggplot2</code>, a package in the <code>tidyverse</code> strikes a good balance between the two. Most notably, however, it relies on a grammar of graphics to make creating bespoke plots consistent across many types of visualisations.</p>
+<p>Broadly, a grammar of graphics is a set of rules we can use to describe the components of a graphic. In the context of creating plots in R, the approach moves away from focusing on specific types of plots (e.g.&nbsp;a scatter plot, a box plot, a bar plot), instead focusing on the elements of the plot that can be build up to create different visualisations <span class="citation" data-cites="wickham2010layered">(<a href="references.html#ref-wickham2010layered" role="doc-biblioref">Wickham 2010</a>)</span>.</p>
+<p>In <code>ggplot2</code>, this means every plot must define a data set from which to map onto a canvas. From here, we add layers to the plot. Some key concepts that form the basis of every plot are:</p>
+<ul>
+<li><p><code>geoms</code>: these are geometric objects that you map your data to. For example, points on a scatter plot.</p></li>
+<li><p><code>aes</code>: these are the aesthetics you define which map certain parts of your data to the plot. For example, the which parts of your data should be mapped onto the x and y coordinates of a scatter plot.</p></li>
+<li><p><code>scale</code>: the scale you want to have for your axes. This is often calculated using sensible defaults in <code>ggplot2</code>, but sometimes you’d like control over this.</p></li>
+<li><p>annotations: Labels used for axes, titles, captions, etc. to help with communicating your results. The functions <code>lab()</code> and <code>annotate()</code> are key here.</p></li>
+</ul>
+<p>In addition to these key ideas, <code>ggplot2</code> allows you to create faceted plots, where we can produce many panels of a plot across variables, allowing you to create many sub plots with a simple, one-line command.</p>
+<p>Beyond these basic ways to define your plot, <code>ggplot2</code> comes with various themes that set sensible defaults for many parameters that define the look of the plot. We will explore these and how to customise them.</p>
+</section>
+<section id="building-a-plot-layer-by-layer" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="building-a-plot-layer-by-layer"><span class="header-section-number">2.2</span> Building a Plot, Layer by Layer</h2>
+<p>To get started, we’ll need a data set. R itself comes with a few data sets build in that we can use for examples. However, there are more fun data sets to use in the packages we’ve already installed. We’ll use the <code>starwars</code> data set from <code>dplyr</code>.</p>
+<p>As always, we’ll first load the <code>tidyverse</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once loaded, we can load up the <code>starwars</code> data set from the <code>dplyr</code> library (one of the libraries loaded up when using <code>library(tidyverse)</code>. Let’s take a look at it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>starwars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87 × 14
+   name        height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
+   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+ 1 Luke Skywa…    172    77 blond   fair    blue       19   male  mascu… Tatooi…
+ 2 C-3PO          167    75 &lt;NA&gt;    gold    yellow    112   none  mascu… Tatooi…
+ 3 R2-D2           96    32 &lt;NA&gt;    white,… red        33   none  mascu… Naboo  
+ 4 Darth Vader    202   136 none    white   yellow     41.9 male  mascu… Tatooi…
+ 5 Leia Organa    150    49 brown   light   brown      19   fema… femin… Aldera…
+ 6 Owen Lars      178   120 brown,… light   blue       52   male  mascu… Tatooi…
+ 7 Beru White…    165    75 brown   light   blue       47   fema… femin… Tatooi…
+ 8 R5-D4           97    32 &lt;NA&gt;    white,… red        NA   none  mascu… Tatooi…
+ 9 Biggs Dark…    183    84 black   light   brown      24   male  mascu… Tatooi…
+10 Obi-Wan Ke…    182    77 auburn… fair    blue-g…    57   male  mascu… Stewjon
+# … with 77 more rows, 4 more variables: species &lt;chr&gt;, films &lt;list&gt;,
+#   vehicles &lt;list&gt;, starships &lt;list&gt;, and abbreviated variable names
+#   ¹​hair_color, ²​skin_color, ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+</div>
+</div>
+<p>We have 87 rows of data with 14 columns containing information about different characters from Star Wars.</p>
+<p>Let’s build our plot up, one layer at a time. Every plot made in <code>ggplot2</code> must define the dataset within the <code>ggplot()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>That hasn’t done much. All we did was create a canvas for our data. But, this is the first step to any plot.</p>
+<p>Next, we’ll add our geometric objects to the plot. We’ll make a scatter plot of the mass and height of each character. To do this, we use the <code>geom_point()</code> function. But, we’re not done yet. The following code won’t run because we’re missing some key information. Try this yourself to see what’s wrong.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We have to specify how <code>ggplot2</code> should map the data we have onto the aesthetics of the plot to create the points. To do this, we need to tell it which parts of our data set should be mapped onto the relevant aesthetics of the plot. For simple points, this means we must define the key aesthetics of a point, the x and y values on the axis and where to get these in our data set.</p>
+<p>Try this code below, which should now work properly.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mass, <span class="at">y =</span> height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 28 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We have a plot, but we also got a warning stating that we have 28 rows in our data set that contain missing values. These rows with missing data are thus missing from the plot. <code>ggplot()</code> tells us about this missing data because it’s generally good practice to explicitly remove values with missing data before you try to plot them. Take this as a reminder that either (1) you need to remove these points prior to plotting, or (2) you can confirm that the number of missing values <code>ggplot()</code> tells you about matches what you’d expect from your understanding of the data.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Warnings in R are there to tell you that the output of your code may not contain what you wanted it to contain. In the previous plot, ggplot dropped those with missing heights and masses, even though we didn’t explicitly tell it to do so. If you remove these ahead of plotting you won’t get a warning.</p>
+<p>Warnings are different to errors in that your code will still work, but you need to check out whether it did what you wanted it to do. On the other hand, errors indicate you did something wrong and your code will fail to run.</p>
+</div>
+</div>
+<p>A further thing you might notice here is the big outlier. One character has a middling height but a huge mass. We might choose to highlight this or do further investigations later. Regardless, this is a good reminder that the best thing you can do to understand your data prior to analysis is plot it.</p>
+<section id="aesthetics" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="aesthetics"><span class="header-section-number">2.2.1</span> Aesthetics</h3>
+<p>While for <code>geom_point()</code> the mandatory aesthetics are x and y values for plotting the points, you can also define additional aesthetics based on variables within your dataset. Let’s pick out the gender of each character.</p>
+<section id="colour" class="level4" data-number="2.2.1.1">
+<h4 data-number="2.2.1.1" class="anchored" data-anchor-id="colour"><span class="header-section-number">2.2.1.1</span> Colour</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mass, <span class="at">y =</span> height, <span class="at">colour =</span> gender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may have noticed my plots have stopped outputting a warning. I’ve suppressed this in Quarto by using the code chunk options. You can set many options for chunks. Here, I’ve set messages such as warnings to not display. You do this by inserting your options using the hash-pipe (not the Weezer song) as follows:</p>
+<p>#| warning: false</p>
+</div>
+</div>
+</section>
+<section id="coordinates" class="level4" data-number="2.2.1.2">
+<h4 data-number="2.2.1.2" class="anchored" data-anchor-id="coordinates"><span class="header-section-number">2.2.1.2</span> Coordinates</h4>
+<p>While we’ve now picked out each dot with the colour representing gender, it’s difficult to see any real trends here due to the outlier. We can tackle this in two ways:</p>
+<ol type="1">
+<li>Filter out the outlier prior to plotting the data. We’ll cover this in <a href="./03_transforming-data.html">Transforming Data</a>.</li>
+<li>Change the coordinates of the plot to only include a limited range.</li>
+</ol>
+<p>We’ll go with the latter option now to show the capabilities of <code>ggplot2</code> and to highlight how we can build plots up layer by layer by just adding more commands.</p>
+<p>To limit the x-axis to a restricted range we need to provide two concatenated values, the start and end of the axis, to the <code>xlim</code> argument in the <code>coord_cartesian()</code> function. This function also takes <code>ylim</code> arguments if you’d like to limit that too.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mass, <span class="at">y =</span> height, <span class="at">colour =</span> gender)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">180</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now we have a better understanding of our data and any general trends across those within a more restricted range of masses.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can alternatively remove data from our plot by setting limits on the x-axis using <code>scale_x_continuous(limits = c(0, 180))</code>. This may seem more intuitive than <code>coord_cartesian()</code>, but it throws out the data points outside the limits prior to plotting. This isn’t a problem in this instance, but if we want to, for example, draw a line of best fit through our data, <code>scale_x_continuous()</code> will ignore the outlier, while <code>coord_catesian()</code> will still include it. Of course, the option to include or exclude this in your estimates is a decision you have to make informed by your domain knowledge. But, being aware of what is going on in each option is crucial to make sure you make the correct inferences.</p>
+</div>
+</div>
+<p>What if we want to change the look of our points, but we want to apply this change to every point (i.e.&nbsp;not making it vary by some column in the data set). We simply have to specify some options outside the <code>aes()</code> call.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> mass, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> height, </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">colour =</span> gender</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="co"># opacity</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">"triangle"</span>, <span class="co"># triangles</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span> <span class="co"># bigger points</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">180</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now we’ve set fixed values for some aesthetics, specifically setting the alpha (opacity), shape, and size of the points. Here’s a good list of the <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html">aesthetic specifications</a> which provides a good cheat sheet to all the aesthetics you can change and their options.</p>
+<p>Setting an aesthetic within <code>aes()</code> and mapping it to a column in your data allows it to vary. Alternatively, you can define the colour to be set outside of the aesthetic to make it consistent across all data points. If you set both at the same time, the fixed aesthetic takes precedence. Give it a go.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> mass, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> height, </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">colour =</span> gender</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="co"># opacity</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">"triangle"</span>, <span class="co"># triangles</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span>, <span class="co"># bigger points</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"red"</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">180</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="fill" class="level4" data-number="2.2.1.3">
+<h4 data-number="2.2.1.3" class="anchored" data-anchor-id="fill"><span class="header-section-number">2.2.1.3</span> Fill</h4>
+<p>A final thing to bear in mind is that colour and fill are different properties within <code>ggplot2</code>. Below, we’ll change the triangles to filled circles (i.e.&nbsp;a with a border) and we’ll map gender to the <strong>fill</strong> aesthetic instead of colour.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> mass, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> height, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> gender</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="co"># opacity</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="st">"circle filled"</span>, <span class="co"># triangles</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span>, <span class="co"># bigger points</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"red"</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">180</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Notice how the colour of the circle varies, but the fill of the border is fixed?</p>
+<p>Finally, we can see how smart <code>ggplot2</code> can be in terms of setting legends. If we use a continuous, rather than a categorical variable to define the colour of points you’ll notice that we get a gradient of colours.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> mass, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> height, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">colour =</span> birth_year</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">180</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Notice the very short and light character highlighted in light blue, indicating they are very old? Who could that be?</p>
+</section>
+</section>
+</section>
+<section id="exploring-geoms" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="exploring-geoms"><span class="header-section-number">2.3</span> Exploring Geoms</h2>
+<p>There are many <code>geoms</code> that you can use in <code>ggplot2</code>. Some common ones you might use are bars (<code>geom_bar()</code>), boxes (<code>geom_boxplot()</code>), violins (<code>geom_violin()</code>), densities (<code>geom_density()</code>), and histograms (<code>geom_histogram()</code>). Let’s briefly see how we might use each <code>geom</code>.</p>
+<section id="bars" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="bars"><span class="header-section-number">2.3.1</span> Bars</h3>
+<p>Bars are best used to indicate counts. They are often used in Psychology along with error bars to indicate means and 95% confidence intervals or standard errors. However, these aren’t the best way to display continuous data as it (1) hides any information about the distribution of data (e.g.&nbsp;groupings) that may be masked by a bar plot with error bars, and (2) anchor people to the top of the bar such that under or overestimate the magnitude of effects and the potential for dispersion <span class="citation" data-cites="kang2021 xiong2020 correll2014">(<a href="references.html#ref-kang2021" role="doc-biblioref">Kang et al. 2021</a>; <a href="references.html#ref-xiong2020" role="doc-biblioref">Xiong et al. 2020</a>; <a href="references.html#ref-correll2014" role="doc-biblioref">Correll and Gleicher 2014</a>)</span>. So, let’s just use them for counts!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="boxplots" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">2.3.2</span> Boxplots</h3>
+<p>Boxplots do a nice job of visualising central tendency (specifically the median) and dispersion (specifically the interquartile range), so they are a good choice for looking at continuous outcomes grouped by a categorical measure. Let’s make a boxplot for each gender looking at heights.</p>
+<p>ggplot(data = starwars) +</p>
+<p>geom_boxplot(mapping = aes(x = gender, y = height))</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>How should you interpret this?</p>
+<ul>
+<li><p>The middle line represents the median</p></li>
+<li><p>The upper white section of the box the upper quartile: 75% of scores fall below this.</p></li>
+<li><p>The lower white section the lower quartile: 25% of scores fall below this.</p></li>
+<li><p>Together the quartiles represent the interquartile range: The middle 50% of scores.</p></li>
+<li><p>The limits of the whiskers (black lines) for the upper and lower parts of the graph represent the smallest and largest observations that are equal to the upper or lower quartiles minus or plus 1.5 times the interquartile range. Effectively, this is most of the rest of the data, apart from outliers.</p></li>
+<li><p>The dots represent outliers (i.e.&nbsp;those values outside of the whiskers).</p></li>
+</ul>
+</section>
+<section id="violins" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="violins"><span class="header-section-number">2.3.3</span> Violins</h3>
+<p>Violin plots show you the density of the mean scores. The wider the section of the violin, the more scores around that area. We set <code>trim</code> to <code>FALSE</code> within the violin plot so that we see the full tails of the data. If we set this to <code>TRUE</code>, then the tails are trimmed to the range of the data.</p>
+<p>It can be useful to draw quantiles on the violin plot so they can communicate similar information as a box plot. To do this, set <code>draw_quantiles</code> to concatenated values indicating the quartiles you’re interested in. Here, we chose the upper and lower 25% along with the median.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> height),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">trim =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="histograms" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="histograms"><span class="header-section-number">2.3.4</span> Histograms</h3>
+<p>Often, you want to get a general idea of the distribution of your data with the aim of looking at skewness and kurtosis. One way to do this is with a histogram. This bins values into a specific range on your x-axis and looks at counts for observations within each bin. By default, <code>ggplot2</code> selects sensible bins for us, in this case bins incrementing by 30cm in height. But, you can change this by setting <code>binwidth</code> to whatever value you like.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height), </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"black"</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>From the histogram we can see that the more common heights lie between 150 and 200cm, but we have a fair spread of scores with a few characters much shorter and larger than this.</p>
+</section>
+<section id="density-plots" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="density-plots"><span class="header-section-number">2.3.5</span> Density Plots</h3>
+<p>Density plots work like histograms but apply kernel smoothing to create a density line that approximates the shape of the histogram. This can often be easier to interpret than a histogram as it smooths out the noise in the histogram to make looking at general trends a little easier.</p>
+<p>As with other geoms in <code>ggplot2</code> we can customise our plot by picking out categories in different colours, and even changing the opacity of the plots if we’re concerned with overplotting. Let’s look at the densities of the heights by each gender.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">fill =</span> gender), </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can see that the distribution of heights is different between genders. Due to the small number of observations where <code>gender</code> is <code>NA</code> (i.e.&nbsp;droids in this data set) we can see this density is very narrow with a large peak.</p>
+</section>
+<section id="smooths" class="level3" data-number="2.3.6">
+<h3 data-number="2.3.6" class="anchored" data-anchor-id="smooths"><span class="header-section-number">2.3.6</span> Smooths</h3>
+<p>If we want to add a line of best fit to a plot, we can either define this line manually, perhaps from some values from a fitted model object, or allow <code>ggplot</code> to do this for us using one of many methods. This relies on <code>ggplot</code> calculating statistics for us based on our data and adding a line of best fit to the plot. To do this, we use the <code>geom_smooth()</code> function. The following methods are available to us:</p>
+<ul>
+<li><p>“lm”: the linear model fitted using <code>stats::lm()</code>, fitting a straight line between the values on the x and y axis to find the line of best fit.</p></li>
+<li><p>“loess”: locally estimated scatterplot smoothing fitted using <code>stats::loess()</code>, a nonparametric method to find the line of best fit in nonlinear data by fitting many local regressions within the series of data.</p></li>
+<li><p>“gam”: generalised additive model fitted using <code>mgcv::gam()</code>, a nonparametric method to find the line of best fit in nonlinear data by using a series of basis splines.</p></li>
+</ul>
+<p>For our purposes, we’ll just rely on “lm” to draw a line of best fit through our data.</p>
+<p>Note, that we used <code>scale_x_continuous()</code> with a restricted range to remove Jabba the Hutt from our data set as an outlier. Remember, unlike <code>coord_cartesian()</code>, <code>scale_x_continuous()</code> removed the data point entirely, meaning our estimate of the line of best fit will be adjusted.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mass, <span class="at">y =</span> height), <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><code>ggplot2</code> will attempt to use a sensible default for the formula used to fit our model. Here, it set the formula to <code>y ~ x</code> as in the values on the y-axis are predicted by values on the x-axis. You can, however, specify an alternative formula by including a string to the formula argument. For example, if we wanted to predict the log of values on the y-axis, we might use <code>formula = log(y) ~ x</code>.</p>
+<p>If none of this made sense, then don’t worry. We will turn to model fitting and estimation in later chapters.</p>
+</section>
+</section>
+<section id="combining-geoms" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="combining-geoms"><span class="header-section-number">2.4</span> Combining Geoms</h2>
+<p>We can easily combine geoms in <code>ggplot2</code> by simply adding another layer to our plot. Let’s create a dotplot and add the line of best fit to the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mass, <span class="at">y =</span> height)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mass, <span class="at">y =</span> height), <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note that there’s a bit of repetition here. We’ve specified the x and y elements in each geom, but they’re just the same. If this happens, we can specify them during the initial <code>ggplot()</code> call and allow these to be inherited by the geoms.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mass, <span class="at">y =</span> height)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="positioning" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="positioning"><span class="header-section-number">2.5</span> Positioning</h2>
+<p>While <code>ggplot2</code> has many sensible defaults for plotting data, often we want more granular control over the positioning of the elements of a plot. There are a few different positions we can specify. Most often, however, if you want to change the position of an element you want to jitter elements by some amount to avoid overplotting or stop bar plots from stacking and instead set them side by side. We’ll briefly explore each method here.</p>
+<p>Often, with scatter plots it’s a better idea to use opacity to help with overplotting as adding jitter clearly influences the interpretation of the plot. But sometimes this still doesn’t help. In these cases, adding some jitter (and making this clear to the reader) is appropriate. Compare the two plots below.</p>
+<section id="jitter" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="jitter"><span class="header-section-number">2.5.1</span> Jitter</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> height)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> height)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="dodge" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="dodge"><span class="header-section-number">2.5.2</span> Dodge</h3>
+<p>With bar plots we often want to display more than just one variable. To do this, we may choose to pick out the bars on the x-axis in colour.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>By default, <code>ggplot2</code> using the “identity” position, where bars are stacked on top of each other within categories. Sometimes this is what we want if we care about the breakdown within the groups on the x-axis. However, if we want to compare absolute values across all subgroups, we need to dodge the bars. We do this using the <code>position = "dodge"</code> argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex), ) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="facets" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="facets"><span class="header-section-number">2.6</span> Facets</h2>
+<p>Another useful part of plotting in ggplot2 is that you can make facets of plots, or subplots. This is a good way to display your data if you have multiple categorical variables. Essentially, you’ll get a plot for each category in your data. There are two approaches to faceting with <code>ggplot2</code>:</p>
+<ul>
+<li><p><code>facet_wrap()</code>: Let <code>ggplot</code> figure out the rows and columns for you, wrapping your plot around to make the most use of the plotting area.</p></li>
+<li><p><code>facet_grid()</code>: Manually define variables which should be mapped onto the columns or rows of the plot.</p></li>
+</ul>
+<p>In each case, you have some control over the number of rows and columns you’d like in the plot. Of course, with <code>facet_wrap()</code> this can override some of the behaviour that maximises the use of the plotting space.</p>
+<section id="facet-wrap" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="facet-wrap"><span class="header-section-number">2.6.1</span> Facet Wrap</h3>
+<p>For <code>facet_wrap()</code>, we define the variables that are mapped onto columns using R’s formula notation, like so: <code>facet_grid(. ~ variable)</code>. The dot signifies that we’re not plotting anything onto separate rows, while the variable name to the right of the <code>~</code> (read: tilde) denotes the variable you’d like to split your plots by, plotting onto separate columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="facet-grid" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="facet-grid"><span class="header-section-number">2.6.2</span> Facet Grid</h3>
+<p>For <code>facet_grid()</code>, we define the variables that are mapped onto columns or rows using R’s formula notation, like so: <code>facet_grid(rows ~ columns).</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(eye_color <span class="sc">~</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In this case, we have limited data for each combination of the variables, so many panels are empty. However, this still gives you a good idea of both the data set and the functionality of <code>facet_grid()</code>.</p>
+<p>By default <code>ggplot2</code> sets a consistent y-axis range across all facets. However, if you’d like the scales to vary within each facet you have some flexibility:</p>
+<ul>
+<li><p><code>scales = "fixed"</code>: Both x and y axis have fixed scales across all facets.</p></li>
+<li><p><code>scales = "free"</code>: Both x and y axis have different scales defined by the range of the data in each facet.</p></li>
+<li><p><code>scales = "free_x"</code> or <code>scales = "free_y"</code>: Either the x or y axis have free scales respectively, with the other scale set to fixed.</p></li>
+</ul>
+</section>
+</section>
+<section id="combining-plots" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="combining-plots"><span class="header-section-number">2.7</span> Combining Plots</h2>
+<p>Often, you might several plots that serve different data visualisation needs, but you want to display these together in one place. If using Quatro, you can choose to save your plots externally (e.g.&nbsp;to a .png file) and then load them back into Quarto, using the <a href="https://quarto.org/docs/authoring/figures.html#subfigures">options to display subfigures</a> to display plots side by side. However, you may want to just display these plots in your document from R code without saving the plots (but still retaining this option if you choose). For this, we can use the <code>patchwork</code> package. To use this package, we have to load it up like any other package prior to using it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can assign our plots to variables just like any other object in R. Let’s create two plots, <code>my_histogram</code> and <code>my_dotplot</code> using the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_histogram <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>my_dotplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> mass)) <span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we can simply add the plots together to display them side by side.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_histogram <span class="sc">+</span> my_dotplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can make relatively complicated layouts by nesting plots together using <code>()</code> and defining separate rows using the <code>/</code>. First, let’s make one final before we make a 3 plot output with 2 rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> mass, <span class="at">colour =</span> gender)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, let’s add all of this together:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(my_histogram <span class="sc">|</span> my_dotplot) <span class="sc">/</span> my_boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="saving-plots" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="saving-plots"><span class="header-section-number">2.8</span> Saving Plots</h2>
+<p>Finally, once you’ve created these plots you might want to save them for further use beyond R and Quarto documents. To do this, we use the <code>ggsave()</code> function which expects us to define a file name (optionally set at a specific path). Note that you need to include the file type. Often, you will want to save your plot as a .png file as these can be small, lightweight, allow transparency, and compress relatively well with little artifacting (cf.&nbsp;.jpegs). Alternatively, you can use a vectorised format (e.g.&nbsp;.svg or .pdf) that scales up and down to different sizes while maintaining the integrity of the plot even better than .png files.</p>
+<p>Next, <code>ggsave()</code> expects the name of the object you saved your plot to, or the last plot you created. I suggest you’re always explicit with this: Once happy with a plot, assign it to an object and save it by specifying the name of the plot. That way, you know you’ll have saved the correct version of your plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"my_plot.png"</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> my_histogram</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="advanced-functionality" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="advanced-functionality"><span class="header-section-number">2.9</span> Advanced Functionality</h2>
+<p>There’s a lot more we can do in ggplot beyond what we’ve covered here. But these basics cover the most important use cases you’ll come across. You now understand how to build plots, what options there are for different aesthetics and geometric shapes, how to change positioning of elements, how to create subplots, and how to combine and save your plots.</p>
+<p>Beyond this, you might want to explore using the <a href="https://ggplot2.tidyverse.org/reference/stat_summary.html"><code>stat_summary()</code> functions in ggplot</a>, which allow you to aggregate data and create statistics such as standard errors and 95% confidence intervals from your data. However, in later sessions we will explore how to get these values from fitted model objects and create plots directly from these values, obviating the need for calculating these statistics in ggplot.</p>
+<p>Once you understand that, you might want to check out modern plotting approaches such as creating <a href="https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/">raincloud plots</a> to show the raw data, density of data, central tendency and confidence intervals together in one attractive package.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-correll2014" class="csl-entry" role="doc-biblioentry">
+Correll, Michael, and Michael Gleicher. 2014. <span>“Error Bars Considered Harmful: Exploring Alternate Encodings for Mean and Error.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 20 (12): 2142–51. <a href="https://doi.org/10.1109/TVCG.2014.2346298">https://doi.org/10.1109/TVCG.2014.2346298</a>.
+</div>
+<div id="ref-kang2021" class="csl-entry" role="doc-biblioentry">
+Kang, Hyunmin, Jeayeong Ji, Yeji Yun, and Kwanghee Han. 2021. <span>“Estimating Bar Graph Averages: Overcoming Within-the-Bar Bias.”</span> <em>I-Perception</em> 12 (1): 204166952098725. <a href="https://doi.org/10.1177/2041669520987254">https://doi.org/10.1177/2041669520987254</a>.
+</div>
+<div id="ref-wickham2010layered" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2010. <span>“A Layered Grammar of Graphics.”</span> <em>Journal of Computational and Graphical Statistics</em> 19 (1): 3–28.
+</div>
+<div id="ref-xiong2020" class="csl-entry" role="doc-biblioentry">
+Xiong, Cindy, Cristina R. Ceja, Casimir J. H. Ludwig, and Steven Franconeri. 2020. <span>“Biased Average Position Estimates in Line and Bar Graphs: Underestimation, Overestimation, and Perceptual Pull.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 26 (1): 301–10. <a href="https://doi.org/10.1109/TVCG.2019.2934400">https://doi.org/10.1109/TVCG.2019.2934400</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
