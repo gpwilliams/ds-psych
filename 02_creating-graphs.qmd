@@ -244,7 +244,7 @@ How should you interpret this?
 
 -   The upper white section of the box the upper quartile: 75% of scores fall below this.
 
--   The lower white section the lower quartile: 25% of scores fall below this.
+-   The lower white section the lower quartile: 25% of scores fall above this.
 
 -   Together the quartiles represent the interquartile range: The middle 50% of scores.
 
@@ -254,7 +254,7 @@ How should you interpret this?
 
 ### Violins
 
-Violin plots show you the density of the mean scores. The wider the section of the violin, the more scores around that area. We set `trim` to `FALSE` within the violin plot so that we see the full tails of the data. If we set this to `TRUE`, then the tails are trimmed to the range of the data.
+Violin plots show you the density of the scores. The wider the section of the violin, the more scores around that area. We set `trim` to `FALSE` within the violin plot so that we see the full tails of the data. If we set this to `TRUE`, then the tails are trimmed to the range of the data.
 
 It can be useful to draw quantiles on the violin plot so they can communicate similar information as a box plot. To do this, set `draw_quantiles` to concatenated values indicating the quartiles you're interested in. Here, we chose the upper and lower 25% along with the median.
 
@@ -418,7 +418,7 @@ ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
 
 ### Scales and Breaks
 
-While `ggplot2` attempts to find sensible scales for the plot, sometimes you might want to restrict this or set a different number of breaks. For continuous scales, we can set this using `scale_x_continuous()` and `scale_y_continuous()`. For discrete scales, it's unsurprisingly, `scale_x_`discrete`()` and `scale_y_`discrete`()`.
+While `ggplot2` attempts to find sensible scales for the plot, sometimes you might want to restrict this or set a different number of breaks. For continuous scales, we can set this using `scale_x_continuous()` and `scale_y_continuous()`. For discrete scales, it's unsurprisingly, `scale_x_discrete()` and `scale_y_discrete()`.
 
 Within these functions we define both where breaks occurs and what the limits of the axes are. Let's set a wider range on the scale for our previous plot and add additional breaks. We can make these using the `seq()` function that will give us a sequence of numbers counting by whatever we want to use. We can then set the upper and lower limit of the plotting region.
 
