@@ -362,14 +362,21 @@ cookieconsent.run({
   <li><a href="#jitter" id="toc-jitter" class="nav-link" data-scroll-target="#jitter"><span class="toc-section-number">2.5.1</span>  Jitter</a></li>
   <li><a href="#dodge" id="toc-dodge" class="nav-link" data-scroll-target="#dodge"><span class="toc-section-number">2.5.2</span>  Dodge</a></li>
   </ul></li>
-  <li><a href="#facets" id="toc-facets" class="nav-link" data-scroll-target="#facets"><span class="toc-section-number">2.6</span>  Facets</a>
+  <li><a href="#customisation" id="toc-customisation" class="nav-link" data-scroll-target="#customisation"><span class="toc-section-number">2.6</span>  Customisation</a>
   <ul class="collapse">
-  <li><a href="#facet-wrap" id="toc-facet-wrap" class="nav-link" data-scroll-target="#facet-wrap"><span class="toc-section-number">2.6.1</span>  Facet Wrap</a></li>
-  <li><a href="#facet-grid" id="toc-facet-grid" class="nav-link" data-scroll-target="#facet-grid"><span class="toc-section-number">2.6.2</span>  Facet Grid</a></li>
+  <li><a href="#labels" id="toc-labels" class="nav-link" data-scroll-target="#labels"><span class="toc-section-number">2.6.1</span>  Labels</a></li>
+  <li><a href="#scales-and-breaks" id="toc-scales-and-breaks" class="nav-link" data-scroll-target="#scales-and-breaks"><span class="toc-section-number">2.6.2</span>  Scales and Breaks</a></li>
+  <li><a href="#colours" id="toc-colours" class="nav-link" data-scroll-target="#colours"><span class="toc-section-number">2.6.3</span>  Colours</a></li>
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes"><span class="toc-section-number">2.6.4</span>  Themes</a></li>
   </ul></li>
-  <li><a href="#combining-plots" id="toc-combining-plots" class="nav-link" data-scroll-target="#combining-plots"><span class="toc-section-number">2.7</span>  Combining Plots</a></li>
-  <li><a href="#saving-plots" id="toc-saving-plots" class="nav-link" data-scroll-target="#saving-plots"><span class="toc-section-number">2.8</span>  Saving Plots</a></li>
-  <li><a href="#advanced-functionality" id="toc-advanced-functionality" class="nav-link" data-scroll-target="#advanced-functionality"><span class="toc-section-number">2.9</span>  Advanced Functionality</a></li>
+  <li><a href="#facets" id="toc-facets" class="nav-link" data-scroll-target="#facets"><span class="toc-section-number">2.7</span>  Facets</a>
+  <ul class="collapse">
+  <li><a href="#facet-wrap" id="toc-facet-wrap" class="nav-link" data-scroll-target="#facet-wrap"><span class="toc-section-number">2.7.1</span>  Facet Wrap</a></li>
+  <li><a href="#facet-grid" id="toc-facet-grid" class="nav-link" data-scroll-target="#facet-grid"><span class="toc-section-number">2.7.2</span>  Facet Grid</a></li>
+  </ul></li>
+  <li><a href="#combining-plots" id="toc-combining-plots" class="nav-link" data-scroll-target="#combining-plots"><span class="toc-section-number">2.8</span>  Combining Plots</a></li>
+  <li><a href="#saving-plots" id="toc-saving-plots" class="nav-link" data-scroll-target="#saving-plots"><span class="toc-section-number">2.9</span>  Saving Plots</a></li>
+  <li><a href="#advanced-functionality" id="toc-advanced-functionality" class="nav-link" data-scroll-target="#advanced-functionality"><span class="toc-section-number">2.10</span>  Advanced Functionality</a></li>
   </ul>
 </nav>
     </div>
@@ -716,9 +723,9 @@ Warning
 <h3 data-number="2.3.6" class="anchored" data-anchor-id="smooths"><span class="header-section-number">2.3.6</span> Smooths</h3>
 <p>If we want to add a line of best fit to a plot, we can either define this line manually, perhaps from some values from a fitted model object, or allow <code>ggplot</code> to do this for us using one of many methods. This relies on <code>ggplot</code> calculating statistics for us based on our data and adding a line of best fit to the plot. To do this, we use the <code>geom_smooth()</code> function. The following methods are available to us:</p>
 <ul>
-<li><p>“lm”: the linear model fitted using <code>stats::lm()</code>, fitting a straight line between the values on the x and y axis to find the line of best fit.</p></li>
-<li><p>“loess”: locally estimated scatterplot smoothing fitted using <code>stats::loess()</code>, a nonparametric method to find the line of best fit in non-linear data by fitting many local regressions within the series of data.</p></li>
-<li><p>“gam”: generalised additive model fitted using <code>mgcv::gam()</code>, a nonparametric method to find the line of best fit in non-linear data by using a series of basis splines.</p></li>
+<li><p><code>"lm"</code>: the linear model fitted using <code>stats::lm()</code>, fitting a straight line between the values on the x and y axis to find the line of best fit.</p></li>
+<li><p><code>"loess"</code>: locally estimated scatterplot smoothing fitted using <code>stats::loess()</code>, a nonparametric method to find the line of best fit in non-linear data by fitting many local regressions within the series of data.</p></li>
+<li><p><code>"gam"</code>: generalised additive model fitted using <code>mgcv::gam()</code>, a nonparametric method to find the line of best fit in non-linear data by using a series of basis splines.</p></li>
 </ul>
 <p>For our purposes, we’ll just rely on “lm” to draw a line of best fit through our data.</p>
 <p>Note, that we used <code>scale_x_continuous()</code> with a restricted range to remove Jabba the Hutt from our data set as an outlier. Remember, unlike <code>coord_cartesian()</code>, <code>scale_x_continuous()</code> removed the data point entirely, meaning our estimate of the line of best fit will be adjusted.</p>
@@ -790,7 +797,7 @@ Warning
 </div>
 <p>By default, <code>ggplot2</code> using the “identity” position, where bars are stacked on top of each other within categories. Sometimes this is what we want if we care about the breakdown within the groups on the x-axis. However, if we want to compare absolute values across all subgroups, we need to dodge the bars. We do this using the <code>position = "dodge"</code> argument.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex), ) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
@@ -798,35 +805,221 @@ Warning
 </div>
 </section>
 </section>
-<section id="facets" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="facets"><span class="header-section-number">2.6</span> Facets</h2>
+<section id="customisation" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="customisation"><span class="header-section-number">2.6</span> Customisation</h2>
+<p>Once we’ve created the elements of the plot using the default settings, we often want to customise it to better present some elements of the plot, or simply to make the plot our own.</p>
+<section id="labels" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="labels"><span class="header-section-number">2.6.1</span> Labels</h3>
+<p>The most basic way to do this is to first change the labels. To do this, we use the <code>labs()</code> function where we can specify various labels such as:</p>
+<ul>
+<li><p><code>x</code>: the label for the x-axis.</p></li>
+<li><p><code>y</code>: the label for the y-axis.</p></li>
+<li><p><code>title</code>: the title of the plot.</p></li>
+<li><p><code>caption</code>: a caption in the bottom right of the plot.</p></li>
+<li><p><code>colour</code>: the heading for the legend if picked out by colour.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counts of Each Gender"</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"A little customisation."</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="scales-and-breaks" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="scales-and-breaks"><span class="header-section-number">2.6.2</span> Scales and Breaks</h3>
+<p>While <code>ggplot2</code> attempts to find sensible scales for the plot, sometimes you might want to restrict this or set a different number of breaks. For continuous scales, we can set this using <code>scale_x_continuous()</code> and <code>scale_y_continuous()</code>. For discrete scales, it’s unsurprisingly, <code>scale_x_</code>discrete<code>()</code> and <code>scale_y_</code>discrete<code>()</code>.</p>
+<p>Within these functions we define both where breaks occurs and what the limits of the axes are. Let’s set a wider range on the scale for our previous plot and add additional breaks. We can make these using the <code>seq()</code> function that will give us a sequence of numbers counting by whatever we want to use. We can then set the upper and lower limit of the plotting region.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counts of Each Gender"</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"A little customisation."</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">80</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="colours" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="colours"><span class="header-section-number">2.6.3</span> Colours</h3>
+<p>Often the default colours in <code>ggplot2</code> are a little garish and not particularly colour-blind friendly. Thankfully, there are a number of packages such as <a href="https://cran.r-project.org/web/packages/RColorBrewer/index.html"><code>RColorBrewer</code></a> and even <a href="https://github.com/BlakeRMills/MetBrewer"><code>MetBrewer</code></a> (themes based on art in the Metropolitan Museum of Art in New York which are seriously good) which can help us. Alternatively, we can specify colours using <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hex codes</a>. We’ll use these here as it means we don’t need an additional package to manage. In this case, we take advantage of <code>scale_fill_manual()</code> to specify a fill for each value we have for the levels assigned to the colour variable in our data set. In this case, that’s 5 colours.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counts of Each Gender"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"A little customisation."</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#efc86e"</span>, </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#97c684"</span>, </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#6f9969"</span>, </span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#808fe1"</span>, </span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#5c66a8"</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If we instead used colour to pick out the sexes here, we would have to change the function to <code>scale_colour_manual()</code>.</p>
+</section>
+<section id="themes" class="level3" data-number="2.6.4">
+<h3 data-number="2.6.4" class="anchored" data-anchor-id="themes"><span class="header-section-number">2.6.4</span> Themes</h3>
+<p>The <code>ggplot2</code> theme is iconic and easy to recognise. But if you want your plots to stand out, you’ll often want to use a different theme or even tweak and existing theme. There are <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">many themes</a> that come with <code>ggplot2</code>. We’ll use a pretty basic one here, <code>theme_bw()</code>. As with all <code>ggplot2</code> functions, we just add this to our chain of functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counts of Each Gender"</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"A little customisation."</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#efc86e"</span>, </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#97c684"</span>, </span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#6f9969"</span>, </span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#808fe1"</span>, </span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#5c66a8"</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We might change or remove additional elements by editing the theme further beyond this by using the <code>theme()</code> function. Note that this must come after you choose a pre-made theme or the pre-made theme’s settings will overwrite your own.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counts of Each Gender"</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"A little customisation."</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#efc86e"</span>, </span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#97c684"</span>, </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#6f9969"</span>, </span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#808fe1"</span>, </span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#5c66a8"</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>)</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Notice here that we removed elements from the theme using <code>element_blank()</code> and we changed text elements by first using <code>element_text()</code> within which we can define the parameters we want to change, such as the font face or size.</p>
+<section id="legend-position" class="level4" data-number="2.6.4.1">
+<h4 data-number="2.6.4.1" class="anchored" data-anchor-id="legend-position"><span class="header-section-number">2.6.4.1</span> Legend Position</h4>
+<p>Finally, the legend can be put in either absolute positions on the plot or in a relative position (e.g.&nbsp;“top” or “bottom”). We can set this again within the theme options.</p>
+<p>First, by defining the position within the plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counts of Each Gender"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"A little customisation."</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#efc86e"</span>, </span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#97c684"</span>, </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#6f9969"</span>, </span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#808fe1"</span>, </span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#5c66a8"</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(.<span class="dv">90</span>, .<span class="dv">70</span>)</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Second, by defining its relative position:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Counts of Each Gender"</span>,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"A little customisation."</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#efc86e"</span>, </span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#97c684"</span>, </span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#6f9969"</span>, </span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#808fe1"</span>, </span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"#5c66a8"</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Clearly, these plots still have a long way to go, but you get the idea about how much control we have.</p>
+</section>
+</section>
+</section>
+<section id="facets" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="facets"><span class="header-section-number">2.7</span> Facets</h2>
 <p>Another useful part of plotting in ggplot2 is that you can make facets of plots, or subplots. This is a good way to display your data if you have multiple categorical variables. Essentially, you’ll get a plot for each category in your data. There are two approaches to faceting with <code>ggplot2</code>:</p>
 <ul>
 <li><p><code>facet_wrap()</code>: Let <code>ggplot</code> figure out the rows and columns for you, wrapping your plot around to make the most use of the plotting area.</p></li>
 <li><p><code>facet_grid()</code>: Manually define variables which should be mapped onto the columns or rows of the plot.</p></li>
 </ul>
 <p>In each case, you have some control over the number of rows and columns you’d like in the plot. Of course, with <code>facet_wrap()</code> this can override some of the behaviour that maximises the use of the plotting space.</p>
-<section id="facet-wrap" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="facet-wrap"><span class="header-section-number">2.6.1</span> Facet Wrap</h3>
+<section id="facet-wrap" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="facet-wrap"><span class="header-section-number">2.7.1</span> Facet Wrap</h3>
 <p>For <code>facet_wrap()</code>, we define the variables that are mapped onto columns using R’s formula notation, like so: <code>facet_grid(. ~ variable)</code>. The dot signifies that we’re not plotting anything onto separate rows, while the variable name to the right of the <code>~</code> (read: tilde) denotes the variable you’d like to split your plots by, plotting onto separate columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="facet-grid" class="level3" data-number="2.6.2">
-<h3 data-number="2.6.2" class="anchored" data-anchor-id="facet-grid"><span class="header-section-number">2.6.2</span> Facet Grid</h3>
+<section id="facet-grid" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="facet-grid"><span class="header-section-number">2.7.2</span> Facet Grid</h3>
 <p>For <code>facet_grid()</code>, we define the variables that are mapped onto columns or rows using R’s formula notation, like so: <code>facet_grid(rows ~ columns).</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(eye_color <span class="sc">~</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(eye_color <span class="sc">~</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>In this case, we have limited data for each combination of the variables, so many panels are empty. However, this still gives you a good idea of both the data set and the functionality of <code>facet_grid()</code>.</p>
@@ -838,57 +1031,57 @@ Warning
 </ul>
 </section>
 </section>
-<section id="combining-plots" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="combining-plots"><span class="header-section-number">2.7</span> Combining Plots</h2>
+<section id="combining-plots" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="combining-plots"><span class="header-section-number">2.8</span> Combining Plots</h2>
 <p>Often, you might several plots that serve different data visualisation needs, but you want to display these together in one place. If using Quatro, you can choose to save your plots externally (e.g.&nbsp;to a .png file) and then load them back into Quarto, using the <a href="https://quarto.org/docs/authoring/figures.html#subfigures">options to display subfigures</a> to display plots side by side. However, you may want to just display these plots in your document from R code without saving the plots (but still retaining this option if you choose). For this, we can use the <code>patchwork</code> package. To use this package, we have to load it up like any other package prior to using it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can assign our plots to variables just like any other object in R. Let’s create two plots, <code>my_histogram</code> and <code>my_dotplot</code> using the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_histogram <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>my_dotplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> mass)) <span class="sc">+</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>my_histogram <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height)) <span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"black"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>my_dotplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> height, <span class="at">y =</span> mass)) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we can simply add the plots together to display them side by side.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_histogram <span class="sc">+</span> my_dotplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>my_histogram <span class="sc">+</span> my_dotplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We can make relatively complicated layouts by nesting plots together using <code>()</code> and defining separate rows using the <code>/</code>. First, let’s make one final before we make a 3 plot output with 2 rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> starwars, </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> mass, <span class="at">colour =</span> gender)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> starwars, </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> mass, <span class="at">colour =</span> gender)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s add all of this together:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(my_histogram <span class="sc">|</span> my_dotplot) <span class="sc">/</span> my_boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(my_histogram <span class="sc">|</span> my_dotplot) <span class="sc">/</span> my_boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+<p><img src="02_creating-graphs_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="saving-plots" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="saving-plots"><span class="header-section-number">2.8</span> Saving Plots</h2>
+<section id="saving-plots" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="saving-plots"><span class="header-section-number">2.9</span> Saving Plots</h2>
 <p>Finally, once you’ve created these plots you might want to save them for further use beyond R and Quarto documents. To do this, we use the <code>ggsave()</code> function which expects us to define a file name (optionally set at a specific path). Note that you need to include the file type. Often, you will want to save your plot as a .png file as these can be small, lightweight, allow transparency, and compress relatively well with little artifacting (cf.&nbsp;.jpegs). Alternatively, you can use a vectorised format (e.g.&nbsp;.svg or .pdf) that scales up and down to different sizes while maintaining the integrity of the plot even better than .png files.</p>
 <p>Next, <code>ggsave()</code> expects the name of the object you saved your plot to, or the last plot you created. I suggest you’re always explicit with this: Once happy with a plot, assign it to an object and save it by specifying the name of the plot. That way, you know you’ll have saved the correct version of your plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"my_plot.png"</span>,</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> my_histogram</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"my_plot.png"</span>,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> my_histogram</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="advanced-functionality" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="advanced-functionality"><span class="header-section-number">2.9</span> Advanced Functionality</h2>
+<section id="advanced-functionality" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="advanced-functionality"><span class="header-section-number">2.10</span> Advanced Functionality</h2>
 <p>There’s a lot more we can do in ggplot beyond what we’ve covered here. But these basics cover the most important use cases you’ll come across. You now understand how to build plots, what options there are for different aesthetics and geometric shapes, how to change positioning of elements, how to create subplots, and how to combine and save your plots.</p>
 <p>Beyond this, you might want to explore using the <a href="https://ggplot2.tidyverse.org/reference/stat_summary.html"><code>stat_summary()</code> functions in ggplot</a>, which allow you to aggregate data and create statistics such as standard errors and 95% confidence intervals from your data. However, in later sessions we will explore how to get these values from fitted model objects and create plots directly from these values, obviating the need for calculating these statistics in ggplot.</p>
 <p>Once you understand that, you might want to check out modern plotting approaches such as creating <a href="https://www.cedricscherer.com/2021/06/06/visualizing-distributions-with-raincloud-plots-and-how-to-create-them-with-ggplot2/">raincloud plots</a> to show the raw data, density of data, central tendency and confidence intervals together in one attractive package.</p>

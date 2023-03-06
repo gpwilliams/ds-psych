@@ -306,11 +306,11 @@ We can see that the distribution of heights is different between genders. Due to
 
 If we want to add a line of best fit to a plot, we can either define this line manually, perhaps from some values from a fitted model object, or allow `ggplot` to do this for us using one of many methods. This relies on `ggplot` calculating statistics for us based on our data and adding a line of best fit to the plot. To do this, we use the `geom_smooth()` function. The following methods are available to us:
 
--   "lm": the linear model fitted using `stats::lm()`, fitting a straight line between the values on the x and y axis to find the line of best fit.
+-   `"lm"`: the linear model fitted using `stats::lm()`, fitting a straight line between the values on the x and y axis to find the line of best fit.
 
--   "loess": locally estimated scatterplot smoothing fitted using `stats::loess()`, a nonparametric method to find the line of best fit in non-linear data by fitting many local regressions within the series of data.
+-   `"loess"`: locally estimated scatterplot smoothing fitted using `stats::loess()`, a nonparametric method to find the line of best fit in non-linear data by fitting many local regressions within the series of data.
 
--   "gam": generalised additive model fitted using `mgcv::gam()`, a nonparametric method to find the line of best fit in non-linear data by using a series of basis splines.
+-   `"gam"`: generalised additive model fitted using `mgcv::gam()`, a nonparametric method to find the line of best fit in non-linear data by using a series of basis splines.
 
 For our purposes, we'll just rely on "lm" to draw a line of best fit through our data.
 
@@ -383,9 +383,191 @@ ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
 By default, `ggplot2` using the "identity" position, where bars are stacked on top of each other within categories. Sometimes this is what we want if we care about the breakdown within the groups on the x-axis. However, if we want to compare absolute values across all subgroups, we need to dodge the bars. We do this using the `position = "dodge"` argument.
 
 ```{r}
-ggplot(data = starwars, mapping = aes(x = gender, fill = sex), ) +
+ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
   geom_bar(position = "dodge")
 ```
+
+## Customisation
+
+Once we've created the elements of the plot using the default settings, we often want to customise it to better present some elements of the plot, or simply to make the plot our own.
+
+### Labels
+
+The most basic way to do this is to first change the labels. To do this, we use the `labs()` function where we can specify various labels such as:
+
+-   `x`: the label for the x-axis.
+
+-   `y`: the label for the y-axis.
+
+-   `title`: the title of the plot.
+
+-   `caption`: a caption in the bottom right of the plot.
+
+-   `colour`: the heading for the legend if picked out by colour.
+
+```{r}
+ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    x = "Gender",
+    y = "Count",
+    title = "Counts of Each Gender",
+    caption = "A little customisation."
+  )
+```
+
+### Scales and Breaks
+
+While `ggplot2` attempts to find sensible scales for the plot, sometimes you might want to restrict this or set a different number of breaks. For continuous scales, we can set this using `scale_x_continuous()` and `scale_y_continuous()`. For discrete scales, it's unsurprisingly, `scale_x_`discrete`()` and `scale_y_`discrete`()`.
+
+Within these functions we define both where breaks occurs and what the limits of the axes are. Let's set a wider range on the scale for our previous plot and add additional breaks. We can make these using the `seq()` function that will give us a sequence of numbers counting by whatever we want to use. We can then set the upper and lower limit of the plotting region.
+
+```{r}
+ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    x = "Gender",
+    y = "Count",
+    title = "Counts of Each Gender",
+    caption = "A little customisation."
+  ) +
+  scale_y_continuous(breaks = seq(0, 80, by = 10), limits = c(0, 80))
+```
+
+### Colours
+
+Often the default colours in `ggplot2` are a little garish and not particularly colour-blind friendly. Thankfully, there are a number of packages such as [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) and even [`MetBrewer`](https://github.com/BlakeRMills/MetBrewer) (themes based on art in the Metropolitan Museum of Art in New York which are seriously good) which can help us. Alternatively, we can specify colours using [hex codes](https://www.w3schools.com/colors/colors_hexadecimal.asp). We'll use these here as it means we don't need an additional package to manage. In this case, we take advantage of `scale_fill_manual()` to specify a fill for each value we have for the levels assigned to the colour variable in our data set. In this case, that's 5 colours.
+
+```{r}
+ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    x = "Gender",
+    y = "Count",
+    title = "Counts of Each Gender",
+    caption = "A little customisation."
+  ) +
+  scale_fill_manual(values = c(
+    "#efc86e", 
+    "#97c684", 
+    "#6f9969", 
+    "#808fe1", 
+    "#5c66a8"
+  ))
+```
+
+If we instead used colour to pick out the sexes here, we would have to change the function to `scale_colour_manual()`.
+
+### Themes
+
+The `ggplot2` theme is iconic and easy to recognise. But if you want your plots to stand out, you'll often want to use a different theme or even tweak and existing theme. There are [many themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) that come with `ggplot2`. We'll use a pretty basic one here, `theme_bw()`. As with all `ggplot2` functions, we just add this to our chain of functions.
+
+```{r}
+ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    x = "Gender",
+    y = "Count",
+    title = "Counts of Each Gender",
+    caption = "A little customisation."
+  ) +
+  scale_fill_manual(values = c(
+    "#efc86e", 
+    "#97c684", 
+    "#6f9969", 
+    "#808fe1", 
+    "#5c66a8"
+  )) +
+  theme_bw()
+```
+
+We might change or remove additional elements by editing the theme further beyond this by using the `theme()` function. Note that this must come after you choose a pre-made theme or the pre-made theme's settings will overwrite your own.
+
+```{r}
+ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    x = "Gender",
+    y = "Count",
+    title = "Counts of Each Gender",
+    caption = "A little customisation."
+  ) +
+  scale_fill_manual(values = c(
+    "#efc86e", 
+    "#97c684", 
+    "#6f9969", 
+    "#808fe1", 
+    "#5c66a8"
+  )) +
+  theme_bw() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(size = 16)
+  )
+```
+
+Notice here that we removed elements from the theme using `element_blank()` and we changed text elements by first using `element_text()` within which we can define the parameters we want to change, such as the font face or size.
+
+#### Legend Position
+
+Finally, the legend can be put in either absolute positions on the plot or in a relative position (e.g. "top" or "bottom"). We can set this again within the theme options.
+
+First, by defining the position within the plot:
+
+```{r}
+ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    x = "Gender",
+    y = "Count",
+    title = "Counts of Each Gender",
+    caption = "A little customisation."
+  ) +
+  scale_fill_manual(values = c(
+    "#efc86e", 
+    "#97c684", 
+    "#6f9969", 
+    "#808fe1", 
+    "#5c66a8"
+  )) +
+  theme_bw() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(size = 16),
+    legend.position = c(.90, .70)
+  )
+```
+
+Second, by defining its relative position:
+
+```{r}
+ggplot(data = starwars, mapping = aes(x = gender, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    x = "Gender",
+    y = "Count",
+    title = "Counts of Each Gender",
+    caption = "A little customisation."
+  ) +
+  scale_fill_manual(values = c(
+    "#efc86e", 
+    "#97c684", 
+    "#6f9969", 
+    "#808fe1", 
+    "#5c66a8"
+  )) +
+  theme_bw() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.text = element_text(size = 16),
+    legend.position = "top"
+  )
+```
+
+Clearly, these plots still have a long way to go, but you get the idea about how much control we have.
 
 ## Facets
 
