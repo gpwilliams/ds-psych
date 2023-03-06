@@ -232,10 +232,6 @@ ggplot(data = starwars) +
 
 Boxplots do a nice job of visualising central tendency (specifically the median) and dispersion (specifically the interquartile range), so they are a good choice for looking at continuous outcomes grouped by a categorical measure. Let's make a boxplot for each gender looking at heights.
 
-ggplot(data = starwars) +
-
-geom_boxplot(mapping = aes(x = gender, y = height))
-
 ```{r}
 #| warning: false
 ggplot(data = starwars) +
@@ -312,9 +308,9 @@ If we want to add a line of best fit to a plot, we can either define this line m
 
 -   "lm": the linear model fitted using `stats::lm()`, fitting a straight line between the values on the x and y axis to find the line of best fit.
 
--   "loess": locally estimated scatterplot smoothing fitted using `stats::loess()`, a nonparametric method to find the line of best fit in nonlinear data by fitting many local regressions within the series of data.
+-   "loess": locally estimated scatterplot smoothing fitted using `stats::loess()`, a nonparametric method to find the line of best fit in non-linear data by fitting many local regressions within the series of data.
 
--   "gam": generalised additive model fitted using `mgcv::gam()`, a nonparametric method to find the line of best fit in nonlinear data by using a series of basis splines.
+-   "gam": generalised additive model fitted using `mgcv::gam()`, a nonparametric method to find the line of best fit in non-linear data by using a series of basis splines.
 
 For our purposes, we'll just rely on "lm" to draw a line of best fit through our data.
 
@@ -462,7 +458,10 @@ my_histogram + my_dotplot
 We can make relatively complicated layouts by nesting plots together using `()` and defining separate rows using the `/`. First, let's make one final before we make a 3 plot output with 2 rows.
 
 ```{r}
-my_boxplot <- ggplot(data = starwars, mapping = aes(x = gender, y = mass, colour = gender)) +
+my_boxplot <- ggplot(
+    data = starwars, 
+    mapping = aes(x = gender, y = mass, colour = gender)
+  ) +
   geom_boxplot() +
   coord_cartesian(ylim = c(0, 200))
 ```

@@ -647,8 +647,6 @@ Warning
 <section id="boxplots" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">2.3.2</span> Boxplots</h3>
 <p>Boxplots do a nice job of visualising central tendency (specifically the median) and dispersion (specifically the interquartile range), so they are a good choice for looking at continuous outcomes grouped by a categorical measure. Let’s make a boxplot for each gender looking at heights.</p>
-<p>ggplot(data = starwars) +</p>
-<p>geom_boxplot(mapping = aes(x = gender, y = height))</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -719,8 +717,8 @@ Warning
 <p>If we want to add a line of best fit to a plot, we can either define this line manually, perhaps from some values from a fitted model object, or allow <code>ggplot</code> to do this for us using one of many methods. This relies on <code>ggplot</code> calculating statistics for us based on our data and adding a line of best fit to the plot. To do this, we use the <code>geom_smooth()</code> function. The following methods are available to us:</p>
 <ul>
 <li><p>“lm”: the linear model fitted using <code>stats::lm()</code>, fitting a straight line between the values on the x and y axis to find the line of best fit.</p></li>
-<li><p>“loess”: locally estimated scatterplot smoothing fitted using <code>stats::loess()</code>, a nonparametric method to find the line of best fit in nonlinear data by fitting many local regressions within the series of data.</p></li>
-<li><p>“gam”: generalised additive model fitted using <code>mgcv::gam()</code>, a nonparametric method to find the line of best fit in nonlinear data by using a series of basis splines.</p></li>
+<li><p>“loess”: locally estimated scatterplot smoothing fitted using <code>stats::loess()</code>, a nonparametric method to find the line of best fit in non-linear data by fitting many local regressions within the series of data.</p></li>
+<li><p>“gam”: generalised additive model fitted using <code>mgcv::gam()</code>, a nonparametric method to find the line of best fit in non-linear data by using a series of basis splines.</p></li>
 </ul>
 <p>For our purposes, we’ll just rely on “lm” to draw a line of best fit through our data.</p>
 <p>Note, that we used <code>scale_x_continuous()</code> with a restricted range to remove Jabba the Hutt from our data set as an outlier. Remember, unlike <code>coord_cartesian()</code>, <code>scale_x_continuous()</code> removed the data point entirely, meaning our estimate of the line of best fit will be adjusted.</p>
@@ -863,9 +861,12 @@ Warning
 </div>
 <p>We can make relatively complicated layouts by nesting plots together using <code>()</code> and defining separate rows using the <code>/</code>. First, let’s make one final before we make a 3 plot output with 2 rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> mass, <span class="at">colour =</span> gender)) <span class="sc">+</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> starwars, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">y =</span> mass, <span class="at">colour =</span> gender)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s add all of this together:</p>
 <div class="cell">
