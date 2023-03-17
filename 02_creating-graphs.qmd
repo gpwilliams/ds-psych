@@ -49,6 +49,10 @@ library(tidyverse)
 
 Once loaded, we can load up the `starwars` data set from the `dplyr` library (one of the libraries loaded up when using `library(tidyverse)`. Let's take a look at it.
 
+::: callout-important
+Use the arrow on the table to see all columns and the pages to see all rows.
+:::
+
 ```{r}
 starwars
 ```
