@@ -60,6 +60,20 @@ library(janitor) # cleaning column names
 library(lubridate) # working with datetimes
 ```
 
+To follow along with the examples in this chapter:
+
+-   Download the course materials from <https://github.com/gpwilliams/ds-psych_course>.
+
+-   Unzip the files and double click on the RStudio Project named `ds-psych.Rproj`. Doing so will open up R Studio within the relevant project.
+
+-   Create a Quarto document within the folder `03_transforming-data`.
+
+Using the RStudio Project ensures that your working directory is in the folder containing the sub-folders for the data and each chapter/lesson. This ensures that you can read the data using the same code in this chapter.
+
+Alternatively, if you are comfortable creating your own project, you can do so either creating it in a new or existing folder on your computer, downloading the repository from GitHub and moving the data folder to the folder containing your project.
+
+If any of this is unfamiliar, please see the section on RStudio Projects in [Getting Started](01_getting-started.qmd).
+
 Assuming you're working from the `ds-psych_course` folder, read the data from the `data` sub-folder. When we assign this data to the object `raw_data` we have created a `tibble` within R that we can work with.
 
 ::: callout-note

@@ -435,6 +435,15 @@ cookieconsent.run({
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) <span class="co"># cleaning column names</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) <span class="co"># working with datetimes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>To follow along with the examples in this chapter:</p>
+<ul>
+<li><p>Download the course materials from <a href="https://github.com/gpwilliams/ds-psych_course" class="uri">https://github.com/gpwilliams/ds-psych_course</a>.</p></li>
+<li><p>Unzip the files and double click on the RStudio Project named <code>ds-psych.Rproj</code>. Doing so will open up R Studio within the relevant project.</p></li>
+<li><p>Create a Quarto document within the folder <code>03_transforming-data</code>.</p></li>
+</ul>
+<p>Using the RStudio Project ensures that your working directory is in the folder containing the sub-folders for the data and each chapter/lesson. This ensures that you can read the data using the same code in this chapter.</p>
+<p>Alternatively, if you are comfortable creating your own project, you can do so either creating it in a new or existing folder on your computer, downloading the repository from GitHub and moving the data folder to the folder containing your project.</p>
+<p>If any of this is unfamiliar, please see the section on RStudio Projects in <a href="./01_getting-started.html">Getting Started</a>.</p>
 <p>Assuming you’re working from the <code>ds-psych_course</code> folder, read the data from the <code>data</code> sub-folder. When we assign this data to the object <code>raw_data</code> we have created a <code>tibble</code> within R that we can work with.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -1298,19 +1307,19 @@ Note
 </div><div class="column" style="width:50%;">
 <p>With ungrouping.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>raw_data <span class="sc">|&gt;</span> </span>
-<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb49-3"><a href="#cb49-3"></a>    <span class="at">start_time =</span> </span>
-<span id="cb49-4"><a href="#cb49-4"></a>      <span class="fu">ymd_hms</span>(start_time)</span>
-<span id="cb49-5"><a href="#cb49-5"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb49-6"><a href="#cb49-6"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">|&gt;</span> </span>
-<span id="cb49-7"><a href="#cb49-7"></a>  <span class="fu">filter</span>(<span class="fu">rank</span>(start_time) <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb49-8"><a href="#cb49-8"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb49-9"><a href="#cb49-9"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb49-10"><a href="#cb49-10"></a>    <span class="at">mean_age =</span> <span class="fu">mean</span>(</span>
-<span id="cb49-11"><a href="#cb49-11"></a>      Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb49-12"><a href="#cb49-12"></a>    )</span>
-<span id="cb49-13"><a href="#cb49-13"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="sc">|&gt;</span> </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_time =</span> </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ymd_hms</span>(start_time)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">|&gt;</span> </span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rank</span>(start_time) <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_age =</span> <span class="fu">mean</span>(</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>      Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
