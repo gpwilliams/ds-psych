@@ -665,7 +665,7 @@ Warning
 <ul>
 <li><p>The middle line represents the median</p></li>
 <li><p>The upper white section of the box the upper quartile: 75% of scores fall below this.</p></li>
-<li><p>The lower white section the lower quartile: 25% of scores fall below this.</p></li>
+<li><p>The lower white section the lower quartile: 25% of scores fall above this.</p></li>
 <li><p>Together the quartiles represent the interquartile range: The middle 50% of scores.</p></li>
 <li><p>The limits of the whiskers (black lines) for the upper and lower parts of the graph represent the smallest and largest observations that are equal to the upper or lower quartiles minus or plus 1.5 times the interquartile range. Effectively, this is most of the rest of the data, apart from outliers.</p></li>
 <li><p>The dots represent outliers (i.e.&nbsp;those values outside of the whiskers).</p></li>
@@ -673,7 +673,7 @@ Warning
 </section>
 <section id="violins" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="violins"><span class="header-section-number">2.3.3</span> Violins</h3>
-<p>Violin plots show you the density of the mean scores. The wider the section of the violin, the more scores around that area. We set <code>trim</code> to <code>FALSE</code> within the violin plot so that we see the full tails of the data. If we set this to <code>TRUE</code>, then the tails are trimmed to the range of the data.</p>
+<p>Violin plots show you the density of the scores. The wider the section of the violin, the more scores around that area. We set <code>trim</code> to <code>FALSE</code> within the violin plot so that we see the full tails of the data. If we set this to <code>TRUE</code>, then the tails are trimmed to the range of the data.</p>
 <p>It can be useful to draw quantiles on the violin plot so they can communicate similar information as a box plot. To do this, set <code>draw_quantiles</code> to concatenated values indicating the quartiles you’re interested in. Here, we chose the upper and lower 25% along with the median.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars) <span class="sc">+</span></span>
@@ -834,7 +834,7 @@ Warning
 </section>
 <section id="scales-and-breaks" class="level3" data-number="2.6.2">
 <h3 data-number="2.6.2" class="anchored" data-anchor-id="scales-and-breaks"><span class="header-section-number">2.6.2</span> Scales and Breaks</h3>
-<p>While <code>ggplot2</code> attempts to find sensible scales for the plot, sometimes you might want to restrict this or set a different number of breaks. For continuous scales, we can set this using <code>scale_x_continuous()</code> and <code>scale_y_continuous()</code>. For discrete scales, it’s unsurprisingly, <code>scale_x_</code>discrete<code>()</code> and <code>scale_y_</code>discrete<code>()</code>.</p>
+<p>While <code>ggplot2</code> attempts to find sensible scales for the plot, sometimes you might want to restrict this or set a different number of breaks. For continuous scales, we can set this using <code>scale_x_continuous()</code> and <code>scale_y_continuous()</code>. For discrete scales, it’s unsurprisingly, <code>scale_x_discrete()</code> and <code>scale_y_discrete()</code>.</p>
 <p>Within these functions we define both where breaks occurs and what the limits of the axes are. Let’s set a wider range on the scale for our previous plot and add additional breaks. We can make these using the <code>seq()</code> function that will give us a sequence of numbers counting by whatever we want to use. We can then set the upper and lower limit of the plotting region.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> starwars, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>

@@ -50,6 +50,7 @@ bibliography: references.bib
 
 format:
   html:
+    df-print: paged
     theme:
       light: minty
       dark: darkly
