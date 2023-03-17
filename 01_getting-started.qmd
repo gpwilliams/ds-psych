@@ -261,7 +261,7 @@ Also, capitalisation matters, so `Summed_numbers` is not `summed_numbers`.
 R has many mathematical operations built in.
 
 | Operation             | Code Example                                                              |
-|-------------------|-----------------------------------------------------|
+|-----------------------|---------------------------------------------------------------------------|
 | Add                   | x + y                                                                     |
 | Subtract              | x - y                                                                     |
 | Multiply              | x \* y                                                                    |
@@ -616,17 +616,17 @@ This can all be a little unintuitive, so in future chapters we'll look at how to
 
 ###### Adding or Removing Rows
 
-What if we want to add a new row to our data? This may be less common than adding a new column for data processing purposes, but it’s good to know anyway.
+What if we want to add a new row to our data? This may be less common than adding a new column for data processing purposes, but it's good to know anyway.
 
-First, we need to know what should go in each cell. Remember that we have to keep the data square, so you can’t have missing values when you add a row. If you don’t have any data, you can just put `NA` (with **no quotations**) to keep the data square but to show that you don’t have any value for a given cell.
+First, we need to know what should go in each cell. Remember that we have to keep the data square, so you can't have missing values when you add a row. If you don't have any data, you can just put `NA` (with **no quotations**) to keep the data square but to show that you don't have any value for a given cell.
 
-Let’s assume we want to add a new participant, 101, who has a dog but an unknown IQ. We must define a list of data where we assign values to the columns that match up with our IQ data column headings. 
+Let's assume we want to add a new participant, 101, who has a dog but an unknown IQ. We must define a list of data where we assign values to the columns that match up with our IQ data column headings.
 
 Here, we have to define all our values to be added in parentheses, using the list() function:
 
-- participant number is 101
-- pet_id is "dog"
-- iq is NA (i.e. unknown)
+-   participant number is 101
+-   pet_id is "dog"
+-   iq is NA (i.e. unknown)
 
 Then we assign this list of values to the data frame in the 101^st^ row.
 
@@ -652,7 +652,7 @@ tail(iq_data)
 
 #### Matrices
 
-Matrices work very similarly to data frames and tibbles, but they’re even stricter. They can only contain the same data type throughout, so we can’t mix columns containing characters and numbers without converting them all to the same data type. Here's how you'd make a matrix. However, we won't go into any other details here. You'll mainly come across matrices only when doing more advanced statistics by hand or developing your own statistical packages. For most of your data work, this isn't necessary.
+Matrices work very similarly to data frames and tibbles, but they're even stricter. They can only contain the same data type throughout, so we can't mix columns containing characters and numbers without converting them all to the same data type. Here's how you'd make a matrix. However, we won't go into any other details here. You'll mainly come across matrices only when doing more advanced statistics by hand or developing your own statistical packages. For most of your data work, this isn't necessary.
 
 ```{r}
 matrix_example <- matrix(
@@ -662,21 +662,22 @@ matrix_example <- matrix(
 )
 matrix_example
 ```
+
 ## Some Final Tips
 
 Finally, a few tips on checking your data before you manipulate your data:
 
-1. If you’re unsure what objects you've created in a session, either check the environment pane in RStudio or type `ls()` to list everything in the global environment.
-2. If you want to know the class of data for some object, use the `class()` function (e.g. `class(iq_data)`).
-3. If you want to know the structure (including object classes) for some object, use the `str()` function (e.g. `str(iq_data)`. Nicely, `str()` also tells you how many arrays are in the object, and how many observations you have in total.
+1.  If you're unsure what objects you've created in a session, either check the environment pane in RStudio or type `ls()` to list everything in the global environment.
+2.  If you want to know the class of data for some object, use the `class()` function (e.g. `class(iq_data)`).
+3.  If you want to know the structure (including object classes) for some object, use the `str()` function (e.g. `str(iq_data)`. Nicely, `str()` also tells you how many arrays are in the object, and how many observations you have in total.
 
-I strongly recommend that you choose a style guide and stick to it throughout when you write your R code. This will make it easier to notice any errors in your code, and increases readability for you and others. Consistency is key here. Since we’re using a `tidyverse` first approach to teaching R in this course, I recommend the following one by Hadley Wickham, a core developer of the `tidyverse`.
+I strongly recommend that you choose a style guide and stick to it throughout when you write your R code. This will make it easier to notice any errors in your code, and increases readability for you and others. Consistency is key here. Since we're using a `tidyverse` first approach to teaching R in this course, I recommend the following one by Hadley Wickham, a core developer of the `tidyverse`.
 
 ### R Style Guide by Hadley Wickham
 
 The important things to take home are that:
 
-- Use sensible object names: if a column shows, e.g. participant weight, call it `participant_weight`.
-- Use verbs to describe user-defined functions: if you write a function to make all the descriptive statistics you could ever want, call it something like `make_descriptives()`.
-- Use a consistent style, like snake_case, or even camelCase, but don’t mix_snake_and_camelCase.
-- Comment your code with descriptions of why you’ve done something using `#`: you can often work out how you did it by following your code, but the why is easily lost.
+-   Use sensible object names: if a column shows, e.g. participant weight, call it `participant_weight`.
+-   Use verbs to describe user-defined functions: if you write a function to make all the descriptive statistics you could ever want, call it something like `make_descriptives()`.
+-   Use a consistent style, like snake_case, or even camelCase, but don't mix_snake_and_camelCase.
+-   Comment your code with descriptions of why you've done something using `#`: you can often work out how you did it by following your code, but the why is easily lost.
